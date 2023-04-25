@@ -1,0 +1,44 @@
+
+       .document_box{
+        position: absolute;
+        top: 5%; /*para q aparezca abajo de la caja de búsqueda*/
+        right: 0;
+        margin-top: 40px;
+        
+        margin-right: 85px; /*mover mas a derecha*/
+        padding: 20px;
+        width: 70%;
+        box-sizing: border-box;
+        overflow: hidden;
+        
+    }
+    .document_box h3 {
+        background-color: gray;
+        color: black;
+        padding: 5px 10px;
+        margin: 0;
+        width: 80%;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .document_box p{
+        background-color: lightgray;
+        height: 500px;
+        padding: 5px 10px;
+        margin: 0;
+        width: 110%;
+    }
+
+    .document_box p input{
+        margin-right: 20px;
+        height: 100px;
+    } /*AKI*/
+
+    .MENU .two{
+      background-color: #743484;
+    }
+
+    .MENU .one{
+      background-color: #c1a7c7;
+    }
+  

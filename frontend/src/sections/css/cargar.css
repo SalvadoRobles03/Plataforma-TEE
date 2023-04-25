@@ -1,0 +1,70 @@
+
+
+       .document_box2{
+        position: fixed;
+        top: 20%; /*para q aparezca abajo de la caja de búsqueda*/
+        right: 0;
+        margin-top: 40px;
+        
+        margin-right: 85px; /*mover mas a derecha*/
+        padding: 20px;
+        width: 70%;
+        box-sizing: border-box;
+        overflow: hidden;
+        
+    }
+    .document_box2 h3 {
+        background-color: gray;
+        color: black;
+        padding: 5px 10px;
+        margin: 0;
+        width: 78.1%;
+        font-family: 'Open Sans', sans-serif;
+
+    }
+
+    .document_box2 p{
+        background-color: lightgray;
+        height: 50px;
+        margin: 0;
+        width: 80%;
+        display: inline-flex; /*para que estén a un lado*/
+    }
+
+    .document_box2 p input{
+        margin-right: 20px;
+        height: 40px;
+        padding-top: 10px; /*mover el si y no*/
+        
+        
+    } /*AKI*/
+
+    .MENU .two{
+      background-color: #743484;
+    }
+
+    .MENU .one{
+      background-color: #c1a7c7;
+    }
+
+    .formpdf{
+        display: inline-flex;
+        width: 60%;
+        margin-left: -69px; /*pa que los labels queden parejos*/
+        margin-top: -10px; /*para que botones queden parejos*/
+
+    }
+
+    .formpdf input {
+        width: 200px;
+        background-color: none;
+    
+    }
+
+    .formpdf button {
+        width: 10px;
+    }
+
+    .submitBoton {
+        background-color: none;
+    }

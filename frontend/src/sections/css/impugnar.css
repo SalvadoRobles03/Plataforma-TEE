@@ -1,0 +1,142 @@
+
+
+.MENU2 .one{
+    background-color: #743484;
+  }
+  
+  .OPCIONES{
+    margin-top: calc(75px + 15px + 45px);
+    position: fixed;
+  }
+  
+    .opciones1{
+      margin-top: 30px;
+    }
+  
+    .Titulo{
+      text-align: center;
+      margin-left: 290px;
+      margin-right: 730px;
+      margin-bottom: -20px;
+      background-color:#a59e9e;
+      color: white;
+      height: 50px;
+      width: 310px; /*para que este parejo con lo morado*/
+    }
+  
+    .CENTRO{
+      padding-top: 12px;
+    }
+  
+    .JUSTIFY{
+      margin-top: -20px;
+      margin-left: auto;
+      text-align: justify;
+    }
+   
+  
+    .opciones1 li{
+      
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: auto;
+      margin-left: 250px;
+      margin-right: 730px;
+      margin-bottom: -20px;
+      background-color: #743484;
+      color: white;
+      font-size: 20px;
+      width: 250px; /*standard*/
+    }
+    
+    .opciones1 ul{
+      list-style: none;
+    }
+  
+    .adjuntar-archivos{
+      position: absolute;
+      background-color: #743484;
+      padding: 40px;
+      
+      text-align: center;
+      
+      margin-top: calc(75px + 15px + 60px + 20px);
+      left: 650px;
+  
+      
+    }
+  
+  
+  
+    .adjuntar-archivos div p{
+      background-color:#a59e9e;
+      border-radius: 24px;
+      font-size: 20px;
+      color: white;
+      padding: 70px;
+      padding-left: 100px;
+      padding-right: 100px;
+      margin-top: 30px;
+      
+    }
+  
+    .titulo1{
+      background-color:#a59e9e;
+      color: white;
+      height: 50px;
+      text-align: center;
+      
+      position: absolute;
+      top: 0;
+      bottom: auto;
+      left: 0;
+      right: 0;
+      height: 50px;
+  
+    }
+  
+  .adjuntar-archivos input{
+    background-color: #a59e9e;
+    
+    
+  }
+
+  .MENU2{
+    align-items: center;
+    margin-left:250px;
+    margin-top: calc(75px + 15px);
+    font-weight: bold;
+    width:auto;
+    position: fixed;
+
+    
+  }
+
+  
+  .MENU2 button{
+            appearance: none;
+            background-color:#a59e9e;
+            border-radius: 24px;
+            border-style: none;
+            box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+            box-sizing: border-box;
+            color: white;
+            cursor: pointer;
+            
+            font-size: 14px;
+            font-weight: 500;
+            height: 48px;
+            justify-content: center;
+            letter-spacing: .25px;
+            line-height: normal;
+            max-width: 100%;
+            overflow: visible;
+            padding: 2px 24px;
+            position: relative;
+            text-align: center;
+            width: auto;
+            margin: 3px;
+            margin-right: 25px;
+            display: inline-block;
+  }

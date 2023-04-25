@@ -1,0 +1,54 @@
+
+.notificaciones.por.leer{
+    position:fixed; 
+    top: 100px; 
+    left: 600px;
+}
+  
+.notificaciones.leidas{
+    position:fixed; 
+    top: 100px; 
+    left: 900px;
+}
+  
+.Notif{
+    font-size: 20px;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+}
+  
+.notificaciones.por.leer img{
+    float: left; 
+    width: 130px; 
+    height: 100px; 
+}
+  
+.notificaciones.leidas img{
+    float: left; 
+    width: 130px; 
+    height: 100px; 
+}
+  
+.Juicios{
+    left: 300px;
+    position: absolute; 
+}
+  
+.solotexto{
+    font-size: 20px;
+    color: white;
+    margin: 0 60px;
+}
+  
+.Juicios .Raya{
+    background-color: #B2B4B2; width: 1000px; height: 5px; 
+    display: flex; justify-content: center; align-items: center;
+}
+  
+  
+  
+  

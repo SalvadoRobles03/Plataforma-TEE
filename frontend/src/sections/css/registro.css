@@ -1,0 +1,66 @@
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    width: 940px;
+    height: 35.5px;
+    box-sizing: border-box;
+    margin-right: 100px;
+}
+input[type="submit"] {
+    background-color: #743484;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 940px;
+    height: 35.5px;
+
+}
+input[type="submit"]:hover {
+    background-color: #300b42;
+}
+body {
+    display: absolute;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+form{
+    top: 500px;
+    margin: 20px;
+    display: inline; /*para que aparezca uno sobre otro dios plan*/
+}
+main {
+    margin: 20;
+    margin-top: 100px;
+    margin-left: 250px; /*para centrar el form*/
+}
+  .container {
+    text-align: center;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1{
+    color: black;
+    text-align: justify; /*para que el  h1 registro se vea alineado*/
+  }
+
+  header {
+      text-align: center;
+      box-shadow: none;
+      background-color: white; /*para la barra de navegación */
+      margin: 0;
+  }
