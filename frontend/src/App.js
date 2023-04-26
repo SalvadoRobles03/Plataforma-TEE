@@ -12,14 +12,11 @@ import Cargarrec from './Cargarrec'
 import Expediente from './Expediente'
 import Firma from './Firma'
 
-
-
-
 export function App() {
   return (
     <div>
         <Routes>
-            <Route exact path path ="/" element={<Main/>}/>
+            <Route exact path ="/" element={<Main/>}/>
             <Route path ="/Login" element={<Login/>}/>
             <Route path = "Registro" element = {<Registro/>}></Route>
             <Route path ="/Entraste" element={<Entraste/>}/>

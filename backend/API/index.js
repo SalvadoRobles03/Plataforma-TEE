@@ -10,16 +10,16 @@ var sql = require("mssql");
 
 // config for your database
 var config = {
-    user: 'test',
-    password: 'HuevitoConChorizo2023.',
+    user: 'team1',
+    password: 'HuevitoConJamon2023.',
     server: 'lab420azdb01.itesm.mx', 
     port: 1433,
-    database: 'tempdb',
+    database: 'team1_test',
     trustServerCertificate: true,
 };
 
 // Read
-app.get('/api/peliculas/:id', function (req, res) {
+app.get('/api/Usuario/:correo', function (req, res) {
    
     // connect to your database
     sql.connect(config, function (err) {
@@ -30,33 +30,7 @@ app.get('/api/peliculas/:id', function (req, res) {
         var request = new sql.Request();
            
         // query to the database and get the records
-        sentencia = "select * from pelicula where id_pelicula = " + req.params.id;
-        console.log(sentencia);
-        request.query(sentencia, function (err, recordset) {
-            
-            if (err) console.log(err)
-
-            // send records as a response
-            res.send(recordset.recordset[0]);
-            
-        });
-    });
-    
-});
-
-
-app.get('/api/usuarios/:id', function (req, res) {
-   
-    // connect to your database
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
-
-        // create Request object
-        var request = new sql.Request();
-           
-        // query to the database and get the records
-        sentencia = "select * from usuario where username = '" + req.params.id + "'"; 
+        sentencia = "select * from Usuario where correo = '" + req.params.correo + "'"; 
         console.log(sentencia);
         request.query(sentencia, function (err, recordset) {
             
