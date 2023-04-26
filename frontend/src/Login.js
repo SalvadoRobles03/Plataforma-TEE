@@ -3,6 +3,8 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { validarUsuario } from './api.js';
 import { useState } from 'react';
 import "./sections/css/log.css";
+import {getNombre} from './api'
+import {getApellido} from './api'
 
 
 
@@ -23,13 +25,15 @@ export function Login() {
 
       console.log(username)
       console.log(password)
-
+      const Nombre= await getNombre(username) +' '+ await getApellido(username)
+      console.log(Nombre)
       
 
       const valido = await validarUsuario(username, password)
       console.log(valido)
       if ( valido ) {
-          sessionStorage.setItem('usuario', username);
+          
+          sessionStorage.setItem('usuario', Nombre);
           sessionStorage.setItem('usuariovalidado', 'ok');
           setProceder('ok');
       } else {

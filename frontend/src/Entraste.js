@@ -4,6 +4,7 @@ import "./sections/css/Plantilla.css"
 import toggleSidebar  from "./sections/toggleSidebar.js";
 import MuroNotif from "./MuroNotif";
 
+
 export function Entraste() {
     return (
     <div>
@@ -22,7 +23,7 @@ export function Entraste() {
                     <a href=""><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
                     <div className="LOGIN">
                         <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
-                        <h3>Usuario</h3>
+                        <h3>{sessionStorage.getItem('usuario')}</h3> 
                     </div>
                 </header>
                 <div className = "sidebar">
@@ -35,9 +36,6 @@ export function Entraste() {
                     <li style={{backgroundColor: "#743484"}}><a href="#">Tablero</a></li>
                     <Link to = "/MuroNotif">
                         <li><a>Notificaciones</a></li>
-                    </Link>
-                    <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
                     </Link>
                     <Link to = "/Expediente">
                         <li><a>Expediente Electrónico</a></li>
@@ -79,10 +77,3 @@ export function Entraste() {
 
 export default Entraste;
 
-/*const Entraste = () =>{
-    return <h1>Pasaste :)</h1>;
-}
-
-export default Entraste;*/
-
-//mg src={require('./TEE.png')}  style={{ width: '400px'}}

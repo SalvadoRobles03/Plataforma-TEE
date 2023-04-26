@@ -22,7 +22,7 @@ export function Expediente() {
           </Link>
             <div className="LOGIN">
                 <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
-                <h3>Usuario</h3>
+                <h3>{sessionStorage.getItem('usuario')}</h3> 
             </div>
         </header>
         <div className = "sidebar">
@@ -38,9 +38,7 @@ export function Expediente() {
                 <Link to = "/MuroNotif">
                     <li><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
                 </Link>
-                <Link to ="/Impugnarc">
-                  <li><a>Impugnar/Comparecer</a></li>
-                </Link>
+                
                 <li style={{backgroundColor: "#743484"}}><a>Expediente Electrónico</a></li>
             </ul>
         </div>

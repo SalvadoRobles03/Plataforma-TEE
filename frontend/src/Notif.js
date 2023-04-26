@@ -26,7 +26,7 @@ export function Notif() {
                     </Link>
                     <div className="LOGIN">
                         <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
-                        <h3>Usuario</h3>
+                        <h3>{sessionStorage.getItem('usuario')}</h3> 
                     </div>
                 </header>
                 <div className = "sidebar">
@@ -40,9 +40,7 @@ export function Notif() {
                         <li><a>Tablero</a></li>
                     </Link>
                     <li style={{backgroundColor: "#743484"}}><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
-                    <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
-                    </Link>
+                    
                     <Link to ="/Expediente">
                         <li><a>Expediente Electrónico</a></li>
                     </Link>

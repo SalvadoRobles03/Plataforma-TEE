@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getUsuario = async (username) => {
+const getCorreo = async (username) => {
 
     const response = await axios.get('http://localhost:2023/api/Usuario/' + username, {
     });
@@ -9,10 +9,28 @@ const getUsuario = async (username) => {
     return response;
 };
 
+const getNombre = async (correo) => {
+
+    const response = await axios.get('http://localhost:2023/api/Nombre/' + correo, {
+    });
+    
+    console.log(response.data.nombres)
+    return response.data.nombres;
+};
+
+const getApellido = async (correo) => {
+
+    const response = await axios.get('http://localhost:2023/api/Apellido/' + correo, {
+    });
+    
+    console.log(response.data.apellidos)
+    return response.data.apellidos;
+};
+
 
 const validarUsuario = async (username, password) => {
 
-    const response = await getUsuario(username);
+    const response = await getCorreo(username);
     console.log(response)
 
     if (response.status === 200) {
@@ -35,4 +53,4 @@ const usuarioAutenticado = () => {
     
 }
 
-export {validarUsuario, getUsuario, usuarioAutenticado};
+export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido};
