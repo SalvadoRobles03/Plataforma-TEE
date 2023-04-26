@@ -35,9 +35,9 @@ export function MuroNotif() {
                             <span className="linea"></span>
                     </button>
                     <Link to= "/Entraste">
-                        <li><a href="#">Tablero</a></li>
+                        <li><a href="/Entraste">Tablero</a></li>
                     </Link>
-                    <li style={{backgroundColor: "#743484"}}><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
+                    <li style={{backgroundColor: "#743484"}}><a href="/MuroNotif">Notificaciones</a></li>
                     
                     <Link to = "/Expediente">
                         <li><a>Expediente Electrónico</a></li>

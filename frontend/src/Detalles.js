@@ -33,7 +33,7 @@ export  function Detalles() {
                 </button>
                 <li><a href="#">Tablero</a></li>
                 <Link to = "/MuroNotif">
-                    <li><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
+                    <li><a href="/MuroNotif">Notificaciones</a></li>
                 </Link>
                 <li style={{backgroundColor: "#743484"}}><a>Impugnar/Comparecer</a></li>
                 <li><a href="../Garzita/9.html">Expediente Electrónico</a></li>

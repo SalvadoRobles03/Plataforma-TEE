@@ -39,7 +39,7 @@ export function Notif() {
                     <Link to= "/Entraste">
                         <li><a>Tablero</a></li>
                     </Link>
-                    <li style={{backgroundColor: "#743484"}}><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
+                    <li style={{backgroundColor: "#743484"}}><a href="/MuroNotif">Notificaciones</a></li>
                     
                     <Link to ="/Expediente">
                         <li><a>Expediente Electrónico</a></li>

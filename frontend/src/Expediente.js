@@ -36,7 +36,7 @@ export function Expediente() {
                   <li><a>Tablero</a></li>
                 </Link>
                 <Link to = "/MuroNotif">
-                    <li><a href="../Muro_notif/Muro_Nof.html">Notificaciones</a></li>
+                    <li><a href="/MuroNotif">Notificaciones</a></li>
                 </Link>
                 
                 <li style={{backgroundColor: "#743484"}}><a>Expediente Electrónico</a></li>
