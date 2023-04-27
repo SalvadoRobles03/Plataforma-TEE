@@ -1,20 +1,22 @@
-import React from 'react'
-import {Routes, Route, Navigate, useNavigate} from "react-router-dom"
-import Login from "./Login"
-import Entraste from './Entraste'
-import MuroNotif from './MuroNotif'
-import Notif from './Notif'
-import Main from './Main'
-import Registro from './Registro'
-import Impugnarc from './Impugnarc'
-import Detalles from './Detalles'
-import Cargarrec from './Cargarrec'
-import Expediente from './Expediente'
-import Firma from './Firma'
+import React from 'react';
+import {Routes, Route, Navigate, useNavigate} from "react-router-dom";
+import Login from "./Login";
+import Entraste from './Entraste';
+import MuroNotif from './MuroNotif';
+import Notif from './Notif';
+import Main from './Main';
+import Registro from './Registro';
+import Impugnarc from './Impugnarc';
+import Detalles from './Detalles';
+import Cargarrec from './Cargarrec';
+import Expediente from './Expediente';
+import Firma from './Firma';
+
 
 export function App() {
   return (
     <div>
+        
         <Routes>
             <Route exact path ="/" element={<Main/>}/>
             <Route path ="/Login" element={<Login/>}/>

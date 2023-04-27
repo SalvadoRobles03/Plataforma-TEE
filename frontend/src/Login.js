@@ -8,6 +8,7 @@ import {getApellido} from './api'
 
 
 
+
 export function Login() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -45,13 +46,14 @@ export function Login() {
         
       }
   };
-
+  
     return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
         <head>
             <title>TEE</title>
             <link rel="icon" type="image/png" href="./sections/TEE.png"></link>
         </head>
+        
         <body>
         <img alt='LOGO' src={require('./sections/TEE.png')}  style={{ width: '400px'}}/>
         <h1>Introduzca sus credenciales</h1>

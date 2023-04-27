@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import "./sections/css/cielo.css"
 import "./sections/css/Plantilla.css"
 import toggleSidebar  from "./sections/toggleSidebar.js";
-import MuroNotif from "./MuroNotif";
+
+
 
 
 export function Entraste() {
+    
     return (
     <div>
             <head>
@@ -17,6 +19,7 @@ export function Entraste() {
                 <link rel="stylesheet" href="./sections/css/cielo.css"/>
                 <link rel="stylesheet" href="./sections/css/Plantilla.css"/>
                 <script src = "./sections/jsFunctions/toggleSidebar.js"></script>
+                
             </head>
         <body>
                 <header style={{backgroundColor: "#743484"}}>
