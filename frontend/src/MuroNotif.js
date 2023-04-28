@@ -3,6 +3,7 @@ import "./sections/css/Plantilla.css"
 import toggleSidebar  from "./sections/toggleSidebar.js";
 import "./sections/css/muronotif.css"
 import { Link } from "react-router-dom";
+import Table from "./TABLA.js"
 
 export function MuroNotif() {
   return (
@@ -45,37 +46,8 @@ export function MuroNotif() {
                     </ul>
                 </div>
 
-                <div class="tabla">
-                    <h1>Muro de Notificaciones</h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Notificaciones</th>
-                                <th>Fecha</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            <Link to = "/Notif">
-                                <td>Nuevo mensaje</td>
-                            </Link>
-                            <td>10/04/2023</td>
-                            </tr>
-                            <tr>
-                            <Link to = "/Notif">
-                                <td>Mensaje número dos</td>
-                            </Link>
-                            <td>11/04/2023</td>
-                            </tr>
-                            <tr>
-                            <Link to = "/Notif">
-                                <td>Último mensaje recibido</td>
-                            </Link>
-                            <td>12/04/2023</td>
-                            </tr>
-                            </tbody>
-                    </table>
-                </div>
+                
+              <Table/>
             </body>
     </div>
   )
@@ -83,12 +55,3 @@ export function MuroNotif() {
 
 export default MuroNotif;
 
-/* para notif: 
- <div className="document_box">
-                    <h1>Notificación</h1>
-                    <h3 style={{fontSize:"22px;"}}><i>Mensaje</i></h3>
-                    <div style={{backgroundColor: "lightgray", height: "400px", padding: "5px 10px", margin: "0", width: "100%"}}>
-                    </div>
-    </div>
-
-*/
