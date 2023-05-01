@@ -27,14 +27,12 @@ const getApellido = async (correo) => {
     return response.data.apellidos;
 };
 
-const RefreshNOTIF = async () => {
-
-    const response = await axios.get('http://localhost:2023/api/NOTIF', {
-    });
-    
-    console.log(response)
-    return response;
-};
+const GetNOTIF = async (id) => {
+    const response = await axios.get(`http://localhost:2023/api/NOTIF/${id}`);
+    const data = response.data;
+    return data;
+  };
+  
 
 
 const validarUsuario = async (username, password) => {
@@ -62,4 +60,4 @@ const usuarioAutenticado = () => {
     
 }
 
-export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido};
+export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF};

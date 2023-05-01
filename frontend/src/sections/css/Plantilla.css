@@ -15,6 +15,7 @@ header{
   padding: 20px;
   box-sizing: border-box;
   color: white;
+  z-index: 9999;
 }
 
 .LOGIN{

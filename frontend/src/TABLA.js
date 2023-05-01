@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {RefreshNOTIF} from "./api";
+import { Link } from "react-router-dom";
+
 
 function Table() {
     const [notifications, setNotifications] = useState([]);
+    
+
+  
   
     function addNotification(notificationText) {
       const notification = {
@@ -15,11 +20,26 @@ function Table() {
     function deleteNotification(notification) {
       setNotifications(notifications.filter((n) => n !== notification));
     }
+
+    function verNotificacion(id) {
+        
+    }
   
     const notificationLinkStyle = {
         color: "black",
         
       };
+
+    useEffect(() => {
+    // Hacer la llamada a la API para obtener los datos
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:2023/api/NOTIF");
+      const data = await response.json();
+      setNotifications(data);
+      console.log(response)
+    }
+    fetchData();
+  }, []);
   
     return (
       <div className="TABLA">
@@ -33,35 +53,30 @@ function Table() {
           </thead>
           <tbody>
             {notifications.map((notification) => (
-              <tr key={notification.date}>
+              <tr key={notification.id_notificacion}>
                 <td>
                   <a href="#" style={notificationLinkStyle}>
-                    {notification.text}
+                    {notification.asunto}
                   </a>
                 </td>
-                <td>{notification.date}</td>
+                <td>{new Date(notification.fecha_envio).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'medium' })}</td>
                 <td>
-                  <button onClick={() => deleteNotification(notification)}>
-                    Eliminar
+                <Link to={`/Notif/${notification.id_notificacion}`}> 
+                    <button className="Botones">
+                        <b>Ver</b> 
+                    </button>
+                </Link>
+                
+                  <button className="Botones" onClick={() => deleteNotification(notification)}>
+                    <b>Eliminar</b> 
                   </button>
+                  
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addNotification(e.target.elements.notification.value);
-            e.target.reset();
-          }}
-        >
-          <label>
-            Notificación:
-            <input type="text" name="notification" required />
-          </label>
-          <button type="submit">Agregar</button>
-        </form>
+        
       </div>
     );
   }

@@ -118,5 +118,29 @@ app.get('/api/NOTIF', function (req, res) {
 
 });
 
+app.get('/api/NOTIF/:ID', function (req, res) {
+
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "select * from Notificacion where id_notificacion = '" + req.params.ID + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+
+});
+
 
 app.listen(2023, () => console.log("Listening on port "));
