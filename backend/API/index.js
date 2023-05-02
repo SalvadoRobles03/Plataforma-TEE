@@ -80,7 +80,7 @@ app.get('/api/Apellido/:correo', function (req, res) {
         var request = new sql.Request();
            
         // query to the database and get the records
-        sentencia = "select apellidos from Usuario where correo = '" + req.params.correo + "'"; 
+        sentencia = "select apellidoPaterno from Usuario where correo = '" + req.params.correo + "'"; 
         console.log(sentencia);
         request.query(sentencia, function (err, recordset) {
             
@@ -129,6 +129,30 @@ app.get('/api/NOTIF/:ID', function (req, res) {
            
         // query to the database and get the records
         sentencia = "select * from Notificacion where id_notificacion = '" + req.params.ID + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+
+});
+
+app.get('/api/DOC/:Folio', function (req, res) {
+
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "select Document_link from Documentos where Folio_Documento = '" + req.params.Folio + "'"; 
         console.log(sentencia);
         request.query(sentencia, function (err, recordset) {
             

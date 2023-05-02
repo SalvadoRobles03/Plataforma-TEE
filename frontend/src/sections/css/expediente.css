@@ -1,20 +1,9 @@
 
-  .search_box5{
-    position: absolute;
-    top: 10%; /*para q aparezca abajo de usuarionombre*/
-    right: 0;
-    margin-top: 40px;
-    margin-right: 85px; /*mover mas a derecha*/
-    padding: 20px;
-    width: 70%;
-    box-sizing: border-box;
-    overflow: hidden;
-    height: 229px;
-}
+
 
 .document_box5{
   position: absolute;
-  top: 35%; /*para q aparezca abajo de la caja de búsqueda*/
+  top: 40%; /*para q aparezca abajo de la caja de búsqueda*/
   right: 0;
   margin-top: 110px;
   margin-right: 85px; /*mover mas a derecha*/
@@ -22,7 +11,17 @@
   width: 70%;
   box-sizing: border-box;
   overflow: hidden;
- 
+  height: auto;
+  background-color: lightgray;
+}
+
+.document_box5 iframe{
+  margin-left: 12%;
+}
+
+
+.document_box5 div{
+  margin-top: 50px;
 }
 
 .document_box5 h3 {
@@ -34,34 +33,55 @@
   
 }
 
-.search_box5 h2 {
+.search_box5{
+  position: absolute;
+  top: 10%; 
+  right: 0;
+  margin-top: 40px;
+  margin-right: 85px; 
+  padding: 20px;
+  width: 70%;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 229px;
+  background-color: lightgray;
+}
+
+.search_box5 input{
+  width: 100%;
+  margin-top: 50px;
+}
+
+.search_box5 div {
+  background-color: lightgray;
+  padding: 10px;
+  height: fit-content;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  text-align: center; /* Agregamos esta propiedad */
+}
+
+.search_box5 button{
+  background-color: yellow;
+  margin-left: 25%;
+  margin-top: 45px;
+}
+
+.titulo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  padding: 10px;
+  border: none;
   background-color: gray;
   color: white;
-  padding: 5px 10px;
-  margin: 0;
-  width: 100%;
-  
+  box-sizing: border-box;
+  z-index: 1; 
+  margin-left: -20px;
+  margin-top: -20px;
+  font-size: 30px;
+  text-align: justify;
 }
-  
-.search_box5 p{
-  background-color: lightgray;
-  height: 20px;
-  padding: 5px 10px;
-  margin: 0;
-  width: 110%;
-  display: inline-block;
-  height: fit-content;
-
-  
-}
-
-.search_box5 input {
-
-    display: inline-block;
-    margin: 15px;
-    margin-right: 80px;
-    cursor: pointer;
-}
-
-
-  

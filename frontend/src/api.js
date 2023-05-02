@@ -23,8 +23,17 @@ const getApellido = async (correo) => {
     const response = await axios.get('http://localhost:2023/api/Apellido/' + correo, {
     });
     
-    console.log(response.data.apellidos)
-    return response.data.apellidos;
+    console.log(response.data.apellidoPaterno)
+    return response.data.apellidoPaterno;
+};
+
+const getDocLink = async (Folio) => {
+
+    const response = await axios.get('http://localhost:2023/api/DOC/' + Folio, {
+    });
+    
+    console.log(response.data.Document_link)
+    return response.data.Document_link;
 };
 
 const GetNOTIF = async (id) => {
@@ -60,4 +69,4 @@ const usuarioAutenticado = () => {
     
 }
 
-export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF};
+export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF, getDocLink};
