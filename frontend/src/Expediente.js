@@ -54,7 +54,7 @@ export function Expediente() {
         <div class="search_box5">
           <div>
             <h3 className="titulo">Expediente</h3>
-            <input id="folio-input" type="text" placeholder="Folio:"/>
+            <input id="folio-input" type="text" placeholder="Folio Documento:"/>
             <button onClick={handleSearch}><b>BUSCAR</b></button> {/* Agrega el manejador del evento al botón */}
           </div>
         </div>
@@ -64,7 +64,7 @@ export function Expediente() {
           <div>
               <div>
                 {/* Utiliza el estado "docUrl" para definir la URL del iframe */}
-                <iframe src={docUrl} width="640" height="480" allow="autoplay"></iframe>
+                <iframe src={docUrl} allow="autoplay"></iframe>
               </div>
           </div>
         </div>
