@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import "./sections/css/registro.css"
+import {insertarUsuario} from '/Users/nataliavalles/Downloads/TribunalFinal/frontend/src/api.js'
 
 export function Registro() {
 
@@ -8,7 +9,7 @@ export function Registro() {
         name: "",
         apellidop: "",
         apellidom: "",
-        firel: "",
+        rfc: "",
         email: "",
         password: "",
         cpassword: "",
@@ -23,21 +24,42 @@ export function Registro() {
      }));
     };
     
-      const handleSubmit = (event) => {
+      const handleSubmit = async (event) => {
         event.preventDefault();
+       
+       //checar si email está escrito correctamente
+       if (!formData.email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) { // Que se cumpla el formato de email.
+        alert("Correo electrónico inválido.");
+        return;
+        }
+
+        // Check if user with this email already exists in the database
+        const emailExists = await checkEmailExists(formData.email);
+            if (emailExists) {
+                alert("Este correo electrónico ya se encuentra registrado.");
+            return;
+        }
+
+        //checar si contraseñas coinciden
         if (formData.password != formData.cpassword) //Straightforward, lógica de primer sem.
         {
             alert("Las contraseñas no coinciden."); // Mejor alert para que de plano quede claro
             return;
         }
-        if (!formData.email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) { // Que se cumpla el formato de email.
-            alert("Correo electrónico inválido.");
-            return;
-        }
+        
+        const response = await insertarUsuario(formData.name, formData.apellidop,formData.apellidom,formData.rfc,formData.email,formData.password);
         console.log(formData);
-        window.location.href = "/Entraste"; // Ya se cumplio, entonces pasas! En vez de link aquí uso esto.
-
-
+        if (response.status == 201) {  // Post regresa 201 cuando hay exito
+            if (response.data == "")
+              alert("Error")
+            else 
+              alert("Registrado con éxito")
+        } else {
+          alert("Error" + response.status);
+        }
+       
+        
+        //window.location.href = "/Entraste"; // Ya se cumplio, entonces pasas! En vez de link aquí uso esto.
       };
 
     return (
@@ -62,8 +84,8 @@ export function Registro() {
                     <label htmlFor="apellidom">Apellido materno*:</label>
                     <input type="text" id="apellidom" name="apellidom" placeholder="" value= {formData.apellidom} onChange={handleChange} required/>
 
-                    <label htmlFor="firel">Firel:</label>
-                    <input type="text" id="firel" name="firel" placeholder="" value={formData.firel} onChange={handleChange}/>
+                    <label htmlFor="rfc">RFC*:</label>
+                    <input type="text" id="rfc" name="rfc" placeholder="rfc" value={formData.rfc} onChange={handleChange} required/>
 
                     <label htmlFor="email">Correo electrónico*:</label>
                     <input type="email" id="email" name="email" placeholder="" value= {formData.email} onChange={handleChange} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
