@@ -36,6 +36,14 @@ const getDocLink = async (Folio) => {
     return response.data.Document_link;
 };
 
+const GetExpediente = async (Folio) => {
+    const response = await axios.get(`http://localhost:2023/api/Expediente/${Folio}`);
+    const data = response.data;
+    const folios = data.map(doc => doc.Folio_Documento); // Genera un nuevo array con los valores de "Folio_Documento"
+    return folios;
+  };
+  
+
 const GetNOTIF = async (id) => {
     const response = await axios.get(`http://localhost:2023/api/NOTIF/${id}`);
     const data = response.data;
@@ -69,4 +77,4 @@ const usuarioAutenticado = () => {
     
 }
 
-export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF, getDocLink};
+export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF, getDocLink, GetExpediente};

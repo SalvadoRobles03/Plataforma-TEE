@@ -37,7 +37,7 @@ app.get('/api/Usuario/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset[0]);
+            res.send(recordset.recordset);
             
         });
     });
@@ -62,7 +62,7 @@ app.get('/api/Nombre/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset[0]);
+            res.send(recordset.recordset);
             
         });
     });
@@ -87,7 +87,7 @@ app.get('/api/Apellido/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset[0]);
+            res.send(recordset.recordset);
             
         });
     });
@@ -135,12 +135,13 @@ app.get('/api/NOTIF/:ID', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset[0]);
+            res.send(recordset.recordset);
             
         });
     });
 
 });
+
 
 app.get('/api/DOC/:Folio', function (req, res) {
 
@@ -160,6 +161,30 @@ app.get('/api/DOC/:Folio', function (req, res) {
 
             // send records as a response
             res.send(recordset.recordset[0]);
+            
+        });
+    });
+
+});
+
+app.get('/api/Expediente/:Folio', function (req, res) {
+
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "SELECT t1.* FROM Expediente_Documento t1 INNER JOIN Expedientes t2 ON t1.id_Expediente = t2.id_Expediente WHERE t2.Folio_Expediente = '" + req.params.Folio + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset);
             
         });
     });

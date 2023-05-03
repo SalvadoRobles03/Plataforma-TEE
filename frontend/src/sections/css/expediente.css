@@ -3,9 +3,9 @@
 
 .document_box5{
   position: absolute;
-  top: 40%; /*para q aparezca abajo de la caja de búsqueda*/
+  top: 45%; /*para q aparezca abajo de la caja de búsqueda*/
   right: 0;
-  margin-top: 110px;
+  margin-top: 150px;
   margin-right: 85px; /*mover mas a derecha*/
   padding: 20px;
   width: 70%;
@@ -45,12 +45,12 @@
   width: 70%;
   box-sizing: border-box;
   overflow: hidden;
-  height: 229px;
+  height: auto;
   background-color: lightgray;
 }
 
 .search_box5 input{
-  width: 100%;
+  width: 80%;
   margin-top: 50px;
 }
 
@@ -69,6 +69,19 @@
   background-color: yellow;
   margin-left: 25%;
   margin-top: 45px;
+}
+
+.search_box5 .Cargar{
+  background-color: darkgray;
+  margin:0;
+  margin-left: 70%;
+  width: 20%;
+  margin-top: -5.5%;
+  color: white;
+}
+
+.search_box5 select{
+  margin-top: 5%;
 }
 
 .titulo {

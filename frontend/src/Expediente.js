@@ -3,24 +3,37 @@ import { Link } from "react-router-dom";
 import toggleSidebar  from "./sections/toggleSidebar.js";
 import "./sections/css/expediente.css"
 import { getDocLink } from './api.js';
+import { GetExpediente } from './api.js';
 
 
 export function Expediente() {
   const [docUrl, setDocUrl] = useState(""); // Estado para guardar la URL del documento
+  const [selectedOption, setSelectedOption] = useState("");
+  const [OpcionesList, SetOpcionesList] = useState([]);
 
+  
   // Manejador del evento del botón "BUSCAR"
   const handleSearch = () => {
     const fetchData = async () => {
-      const folio = document.querySelector('#folio-input').value;
-      const docUrl = await getDocLink(folio);
       
+      const docUrl = await getDocLink(selectedOption);
 
       setDocUrl(docUrl);
-      
     };
     fetchData();
-     
   };
+
+  const CargarExpediente = () =>{
+    const GetOpciones = async () => {
+      const Folio_Expediente = document.querySelector('#folio-input').value;
+      const opciones = await GetExpediente(Folio_Expediente);
+
+      SetOpcionesList(opciones);
+    };
+    GetOpciones();
+  }
+
+ 
 
   return (
     <div>
@@ -54,7 +67,17 @@ export function Expediente() {
         <div class="search_box5">
           <div>
             <h3 className="titulo">Expediente</h3>
-            <input id="folio-input" type="text" placeholder="Folio Documento:"/>
+            <input id="folio-input" type="text" placeholder="Folio Expediente:"/>
+            <button className='Cargar' onClick={CargarExpediente}>Cargar Expediente</button>
+            <select value={selectedOption} onChange={e => setSelectedOption(e.target.value)}>
+              <option value="" disabled hidden>
+                <h2>Seleccione Documento</h2>
+              </option>
+              {OpcionesList.map((opcion) => (
+                <option value={opcion}>{opcion}</option>
+              ))}
+            </select>
+
             <button onClick={handleSearch}><b>BUSCAR</b></button> {/* Agrega el manejador del evento al botón */}
           </div>
         </div>

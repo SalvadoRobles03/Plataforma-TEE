@@ -46,33 +46,9 @@ export function Entraste() {
                 </ul>
                 </div>
 
-                <div className="notificaciones por leer">
-                    <div>   
-                        <img src= {require("./sections/Notificaciones.jpg")}/>
-                        <h1 className="Notif" >Notificaciones por Leer</h1>
-                    </div>  
-                </div>
+                <h1>BIENVENIDO</h1>
 
-                <div className="notificaciones leidas">
-                    <div>
-                        <img src= {require("./sections/notificaciones_abierta.jpg" )}/>
-                        <h1  className= "Notif"  >Notificaciones Abiertas</h1>
-                    </div>
-                </div>
-
-                <div className="Juicios">
-                    <h1 style={{color:"#14213D", position: "absolute", top: "270px"}}>Juicios en Instrucción y Resueltos</h1>
-                    <div style={{backgroundColor: "#743484", width: "1000px", height: "65px", position: "absolute", top: "340px", display: "flex", justifyContent: "center", alignItems: "center"}}>
-                        <h1 className="solotexto" >Expediente</h1>
-                        <h1 className="solotexto" >Expediente asignado</h1>
-                        <h1 className="solotexto" >Hechos</h1>
-                        <h1 className="solotexto" >Acciones</h1>
-                    </div>
-                    <div className="Raya" style={{marginTop:'450px'}} ></div>
-                    <div className="Raya" style={{marginTop:'40px'}}></div>
-                    <div className="Raya" style={{marginTop:'40px'}}></div>
-                    <div className="Raya" style={{marginTop:'40px'}}></div>
-                </div>
+                
         </body>
     </div>
 );
