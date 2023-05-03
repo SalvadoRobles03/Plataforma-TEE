@@ -14,8 +14,8 @@ const getNombre = async (correo) => {
     const response = await axios.get('http://localhost:2023/api/Nombre/' + correo, {
     });
     
-    console.log(response.data.nombres)
-    return response.data.nombres;
+    console.log(response.data)
+    return response.data;
 };
 
 const getApellido = async (correo) => {
@@ -23,8 +23,8 @@ const getApellido = async (correo) => {
     const response = await axios.get('http://localhost:2023/api/Apellido/' + correo, {
     });
     
-    console.log(response.data.apellidoPaterno)
-    return response.data.apellidoPaterno;
+    console.log(response.data)
+    return response.data;
 };
 
 const getDocLink = async (Folio) => {

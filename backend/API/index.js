@@ -37,7 +37,7 @@ app.get('/api/Usuario/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset);
+            res.send(recordset.recordset[0]);
             
         });
     });
@@ -62,7 +62,7 @@ app.get('/api/Nombre/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset);
+            res.send(recordset.recordset[0]);
             
         });
     });
@@ -87,7 +87,7 @@ app.get('/api/Apellido/:correo', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset);
+            res.send(recordset.recordset[0]);
             
         });
     });
@@ -135,7 +135,7 @@ app.get('/api/NOTIF/:ID', function (req, res) {
             if (err) console.log(err)
 
             // send records as a response
-            res.send(recordset.recordset);
+            res.send(recordset.recordset[0]);
             
         });
     });
