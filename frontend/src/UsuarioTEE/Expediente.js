@@ -90,10 +90,12 @@ export function Expediente() {
 
   const handleEnviarNotificacion= async (event) => {
     event.preventDefault();
+    
     const currentTime = new Date();
     setTimeClicked(currentTime);
     const response = await insertarNotificacion(currentTime,formData.asunto,formData.texto);
-    console.log(formData);
+    console.log(formData.asunto);
+    console.log(formData.texto)
     if (response.status == 201) {  // Post regresa 201 cuando hay exito
       if (response.data == "")
         alert("Error")
