@@ -60,6 +60,9 @@ export function Expediente() {
                 <Link to = "/MuroNotif">
                     <li><a href="/MuroNotif">Notificaciones</a></li>
                 </Link>
+                <Link to = "/Impugnarc">
+                        <li><a>Impugnar/Comparecer</a></li>
+                    </Link>
                 
                 <li style={{backgroundColor: "#743484"}}><a>Expediente Electrónico</a></li>
             </ul>
@@ -91,6 +94,13 @@ export function Expediente() {
               </div>
           </div>
         </div>
+
+        <div className='EnviarNoti'>
+          <label>Mandar Notificación</label>
+          <textarea rows="auto" cols="auto"></textarea>
+          <button><b>Enviar Notificación</b></button>
+        </div>
+        
         
     </div>
   )

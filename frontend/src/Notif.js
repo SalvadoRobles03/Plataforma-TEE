@@ -65,7 +65,9 @@ export function Notif() {
             <li style={{ backgroundColor: "#743484" }}>
               <a href="/MuroNotif">Notificaciones</a>
             </li>
-
+            <Link to = "/Impugnarc">
+                        <li><a>Impugnar/Comparecer</a></li>
+                    </Link>
             <Link to="/Expediente">
               <li>
                 <a>Expediente Electrónico</a>

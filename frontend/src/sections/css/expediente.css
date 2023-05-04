@@ -100,3 +100,27 @@
   font-size: 30px;
   text-align: justify;
 }
+
+.EnviarNoti{
+  
+  z-index: 2;
+  margin-top: 102%;
+  margin-left: 23.5%;
+  width: 70%;
+  align-items: center;
+}
+
+.EnviarNoti label{
+  text-align: center;
+  font-size: 20px;
+}
+
+.EnviarNoti textarea{
+  height: 100px;
+  width: 99%;
+}
+
+.EnviarNoti button{
+  margin-left: 25%;
+  background-color: yellow;
+}

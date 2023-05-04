@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./sections/css/cielo.css"
+import "./sections/css/cielo.css";
 import "./sections/css/Plantilla.css"
 import toggleSidebar  from "./sections/toggleSidebar.js";
 
@@ -39,6 +39,9 @@ export function Entraste() {
                     <li style={{backgroundColor: "#743484"}}><a href="#">Tablero</a></li>
                     <Link to = "/MuroNotif">
                         <li><a>Notificaciones</a></li>
+                    </Link>
+                    <Link to = "/Impugnarc">
+                        <li><a>Impugnar/Comparecer</a></li>
                     </Link>
                     <Link to = "/Expediente">
                         <li><a>Expediente Electrónico</a></li>
