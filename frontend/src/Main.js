@@ -17,28 +17,37 @@ export function Main() {
             <div className="container">
                 <nav style={{backgroundColor: "#192948"}}>    
                     <ul>
-                        <li>INICIO</li>
-                        <li>CONTACTANOS</li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </nav>
-                    <div className="bajar">
-                        <h2>Para comenzar a utilizar la plataforma<br/> iniciar sesión o registrarse</h2>
-                        <Link to = "/Login">
-                            <a><button className="botonCool" type="button">
+                <div className="bajar">
+                    <h2>Para comenzar a utilizar la plataforma<br/> iniciar sesión o registrarse</h2>
+                    <Link to="/LoginTEE">
+                        <a>
+                            <button className="botonCoolAdmin" type="button">
+                                Inicio Admin
+                                <img src={require("./bxs-right-arrow-alt.svg")} alt=""/>
+                            </button>
+                        </a>
+                    </Link>
+                    <Link to="/Login">
+                        <a>
+                            <button className="botonCool" type="button">
                                 Iniciar Sesion
                                 <img src={require("./bxs-right-arrow-alt.svg")}alt=""/>
                             </button> 
-                            </a>
-                        </Link>
-                        <Link to= "/Registro">
-                            <a>
-                                <button className="botonCool" type="button">
+                        </a>
+                    </Link>
+                    <Link to="/Registro">
+                        <a>
+                            <button className="botonCool" type="button">
                                 Registrarse
                                 <img src={require("./bxs-right-arrow-alt.svg")} alt=""/>
-                                </button>
-                            </a>
-                        </Link>
-                    </div>
+                            </button>
+                        </a>
+                    </Link>
+                </div>
                 <img src={require('./sections/TEE.png')} alt="logo" class="emp"/>
             </div>
         </body>
@@ -47,4 +56,3 @@ export function Main() {
 }
 
 export default Main
-

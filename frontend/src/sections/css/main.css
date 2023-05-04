@@ -44,6 +44,23 @@ h2{
     text-align: justify; /*para que el texto aparezca bien*/
   }
   
+  .botonCoolAdmin {
+    background-color: #4c0318; 
+    padding: 0%;
+    width: 140px;
+    height: 40px;
+    border: 0;
+    outline: none;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 25px;
+    transition: width 0.5s;
+    text-decoration: none;
+    left: -250px; /*mover botones*/
+  }
+  
   .botonCool{
     padding: 0%;
     width: 140px;
@@ -69,6 +86,13 @@ h2{
     
   }
   
+.botonCoolAdmin:hover{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 160px;
+    
+  }
   .container .emp{
     display: block;
     margin: auto;

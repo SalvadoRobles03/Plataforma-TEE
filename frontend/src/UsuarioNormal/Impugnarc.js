@@ -1,6 +1,6 @@
-import "./sections/css/Plantilla.css"
-import toggleSidebar  from "./sections/toggleSidebar.js";
-import "./sections/css/impugnar.css"
+import "../sections/css/Plantilla.css"
+import toggleSidebar  from "../sections/toggleSidebar";
+import "../sections/css/impugnar.css"
 import { Link } from "react-router-dom";
 
 export function Impugnarc() {
@@ -18,10 +18,10 @@ export function Impugnarc() {
         </head>
         <header style={{backgroundColor: "#743484"}}>
             <Link to="/Entraste">
-                <a><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
+                <a><img className="LOGO"src= {require("../sections/TEE.png" )}alt="Logo" width="150px"/></a>
             </Link>
             <div className="LOGIN">
-                <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
+                <img src= {require("../sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
                 <h3>{sessionStorage.getItem('usuario')}</h3> 
             </div>
         </header>

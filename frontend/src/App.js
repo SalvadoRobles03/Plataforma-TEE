@@ -1,16 +1,20 @@
 import React from 'react';
 import {Routes, Route, Navigate, useNavigate} from "react-router-dom";
-import Login from "./Login";
-import Entraste from './Entraste';
-import MuroNotif from './MuroNotif';
-import Notif from './Notif';
+import Login from "./UsuarioNormal/LoginNormal";
+import LoginTEE from "./UsuarioTEE/LoginTEE"
+import Entraste from './UsuarioNormal/Entraste';
+import EntrasteTEE from './UsuarioTEE/Entraste_TEE'
+import MuroNotif from './UsuarioNormal/MuroNotif';
+import Notif from './UsuarioNormal/Notif';
 import Main from './Main';
 import Registro from './Registro';
-import Impugnarc from './Impugnarc';
-import Detalles from './Detalles';
-import Cargarrec from './Cargarrec';
-import Expediente from './Expediente';
-import Firma from './Firma';
+import Impugnarc from './UsuarioNormal/Impugnarc';
+import Detalles from './UsuarioNormal/Detalles';
+import Cargarrec from './UsuarioNormal/Cargarrec';
+import Expediente from './UsuarioTEE/Expediente';
+import Firma from './UsuarioNormal/Firma';
+import MandarNotif from './UsuarioTEE/MandarNotif'
+
 
 
 export function App() {
@@ -20,9 +24,12 @@ export function App() {
         <Routes>
             <Route exact path ="/" element={<Main/>}/>
             <Route path ="/Login" element={<Login/>}/>
-            <Route path = "Registro" element = {<Registro/>}></Route>
+            <Route path ="/LoginTEE" element={<LoginTEE/>}/>
+            <Route path = "Registro" element = {<Registro/>}/>
             <Route path ="/Entraste" element={<Entraste/>}/>
+            <Route path ="/EntrasteTEE" element={<EntrasteTEE/>}/>
             <Route path = "/MuroNotif" element= {<MuroNotif/>}></Route>
+            <Route path = "/MandarNotif" element= {<MandarNotif/>}></Route>
             <Route path="/Notif/:id" element={<Notif />} />
             <Route path = "/Impugnarc" element = {<Impugnarc/>}></Route>
             <Route path = "/Detalles" element = {<Detalles/>}></Route>

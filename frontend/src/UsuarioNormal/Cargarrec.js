@@ -1,11 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import toggleSidebar  from "./sections/toggleSidebar.js";
-import "./sections/css/firma.css"
+import toggleSidebar  from "../sections/toggleSidebar.js";
+import { Link } from "react-router-dom";
+import "../sections/css/cargar.css"
 
-export  function Firma() {
+
+export function Cargarrec() {
   return (
     <div>
+
         <head>
             <meta charset="UTF-8"/>
             <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -18,10 +19,10 @@ export  function Firma() {
         </head>
         <header style={{backgroundColor: "#743484"}}>
             <Link to = "/Entraste">
-                <a><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
+                <a><img className="LOGO"src= {require("../sections/TEE.png" )}alt="Logo" width="150px"/></a>
             </Link>
             <div className="LOGIN">
-                <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
+                <img src= {require("../sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
                 <h3>{sessionStorage.getItem('usuario')}</h3> 
             </div>
         </header>
@@ -39,40 +40,50 @@ export  function Firma() {
                     <li><a href="/MuroNotif">Notificaciones</a></li>
                 </Link>
                 <li style={{backgroundColor: "#743484"}}><a>Impugnar/Comparecer</a></li>
-                <Link to= "/Expediente">
-                    <li><a>Expediente Electrónico</a></li>
-                </Link>
+                <li><a href="../Garzita/9.html">Expediente Electrónico</a></li>
             </ul>
         </div>
 
         <div className="MENU2">
             <Link to = "/Impugnarc">
-                <button className="two">1. Acreditar Personería</button>
+            <button className="two">1. Acreditar Personería</button>
             </Link>
             <Link to = "/Detalles">
                 <button className="three">2. Detalles</button> {/*que quede morado el boton con className*/}
             </Link>
-            <Link to = "/Cargarrec">
-                <button className="four">3. Cargar Recursos</button>
+            <button className="one">3. Cargar Recursos</button>
+            <Link to = "/Firma">
+                <button className="four">4. Firmar Recurso</button>
             </Link>
-            <button className="one">4. Firmar Recurso</button>
         </div>
 
         <div class="Footer">
-            <Link to = "/Cargarrec">
+            <Link to = "/Detalles">
                 <a><button>Anterior</button></a> 
+            </Link>
+            <Link to = "/Firma">
+                <a><button>Siguiente</button></a> 
             </Link>
             <button>Cancelar</button>
         </div>
-    
-        <div class="preview-container">
-            <iframe id="preview" src="" frameborder="0"></iframe>
-            <button class="preview-button">FIRMAR</button>
+
+        <div className="document_box2">
+            <h3><i>Adjuntar Pruebas</i></h3>
+            <p>
+                <label>Si<input type="radio" checked="checked" name="radio"/>
+                <span className="checkmark"></span></label>
+                <label>No<input type="radio" checked="checked" name="radio"/>
+                <span className="checkmark"></span></label>
+            </p>
+
+            <form className="formpdf" id="uploadForm" enctype="multipart/form-data">
+                    <label for="pdfFile">Seleccionar archivo PDF:</label>
+                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf"/>
+                    <input style = {{backgroundColor:"#743484", color: "black", width: "auto", height: "23px", paddingTop: "5px",  border: "4px black"}} type="submit" value="Subir archivo"/>
+            </form>  
         </div>
-
-
     </div>
   )
 }
 
-export default Firma
+export default Cargarrec

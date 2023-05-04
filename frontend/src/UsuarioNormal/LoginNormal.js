@@ -1,10 +1,10 @@
 import {Outlet, Link} from "react-router-dom"
 import { useNavigate, Navigate } from "react-router-dom";
-import { validarUsuario } from './api.js';
+import { validarUsuario } from '../api.js';
 import { useState } from 'react';
-import "./sections/css/log.css";
-import {getNombre} from './api'
-import {getApellido} from './api'
+import "../sections/css/log.css";
+import {getNombre} from '../api.js'
+import {getApellido} from '../api.js'
 
 
 
@@ -49,13 +49,10 @@ export function Login() {
   
     return (
     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
-        <head>
-            <title>TEE</title>
-            <link rel="icon" type="image/png" href="./sections/TEE.png"></link>
-        </head>
+        
         
         <body>
-        <img alt='LOGO' src={require('./sections/TEE.png')}  style={{ width: '400px'}}/>
+        <img alt='LOGO' src={require('../sections/TEE.png')}  style={{ width: '400px'}}/>
         <h1>Introduzca sus credenciales</h1>
           <form onSubmit={handleFormSubmit}>
             <label>

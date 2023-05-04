@@ -1,10 +1,10 @@
 /*import "./sections/css/cielo.css"*/
 /*import "./sections/css/Plantilla.css"*/
-import toggleSidebar from "./sections/toggleSidebar.js";
-import "./sections/css/notif.css";
+import toggleSidebar from "../sections/toggleSidebar.js";
+import "../sections/css/notif.css";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { GetNOTIF } from "./api";
+import { GetNOTIF } from "../api.js";
 
 export function Notif() {
   const { id } = useParams();
@@ -36,14 +36,14 @@ export function Notif() {
           <Link to="/Entraste">
               <img
                 className="LOGO"
-                src={require("./sections/TEE.png")}
+                src={require("../sections/TEE.png")}
                 alt="Logo"
                 width="150px"
               />
           </Link>
           <div className="LOGIN">
             <img
-              src={require("./sections/Login.webp")}
+              src={require("../sections/Login.webp")}
               alt="Foto Perfil"
               width="50 px"
             />

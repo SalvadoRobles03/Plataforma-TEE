@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./sections/css/cielo.css";
-import "./sections/css/Plantilla.css"
-import toggleSidebar  from "./sections/toggleSidebar.js";
+import "../sections/css/cielo.css";
+import "../sections/css/Plantilla.css"
+import toggleSidebar  from "../sections/toggleSidebar.js";
 
 
 
@@ -23,9 +23,9 @@ export function Entraste() {
             </head>
         <body>
                 <header style={{backgroundColor: "#743484"}}>
-                    <a href=""><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
+                    <a href=""><img className="LOGO"src= {require("../sections/TEEAdmin.png" )}alt="Logo" width="150px"/></a>
                     <div className="LOGIN">
-                        <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
+                        <img src= {require("../sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
                         <h3>{sessionStorage.getItem('usuario')}</h3> 
                     </div>
                 </header>
@@ -37,12 +37,10 @@ export function Entraste() {
                             <span className="linea"></span>
                     </button>
                     <li style={{backgroundColor: "#743484"}}><a href="#">Tablero</a></li>
-                    <Link to = "/MuroNotif">
-                        <li><a>Notificaciones</a></li>
+                    <Link to = "/MandarNotif">
+                        <li><a>Mandar Notificación</a></li>
                     </Link>
-                    <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
-                    </Link>
+                    
                     <Link to = "/Expediente">
                         <li><a>Expediente Electrónico</a></li>
                     </Link>

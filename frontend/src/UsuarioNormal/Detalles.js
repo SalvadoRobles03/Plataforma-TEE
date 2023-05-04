@@ -1,28 +1,26 @@
-import toggleSidebar  from "./sections/toggleSidebar.js";
+import toggleSidebar  from "../sections/toggleSidebar.js";
 import { Link } from "react-router-dom";
-import "./sections/css/cargar.css"
+import "../sections/css/detalles.css"
 
-
-export function Cargarrec() {
+export  function Detalles() {
   return (
     <div>
-
         <head>
             <meta charset="UTF-8"/>
             <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <title>Impugnar/Comparecer</title>
             <link rel="icon" type="image/png" href="./LOGO.png"/>
-            <link rel="stylesheet" href="./sections/css/detalles.css"/>
-            <link rel="stylesheet" href="./sections/css/detalles.css"/>
+            <link rel="stylesheet" href="./sections/css/impugnar.css"/>
+            <link rel="stylesheet" href="./sections/css/Plantilla.css"/>
             <script src="5.js"></script> 
         </head>
         <header style={{backgroundColor: "#743484"}}>
             <Link to = "/Entraste">
-                <a><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
+                <a><img className="LOGO"src= {require("../sections/TEE.png" )}alt="Logo" width="150px"/></a>
             </Link>
             <div className="LOGIN">
-                <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
+                <img src= {require("../sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
                 <h3>{sessionStorage.getItem('usuario')}</h3> 
             </div>
         </header>
@@ -33,9 +31,7 @@ export function Cargarrec() {
                     <span className="linea"></span>
                     <span className="linea"></span>
                 </button>
-                <Link to = "/Entraste">
-                    <li><a>Tablero</a></li>
-                </Link>
+                <li><a href="#">Tablero</a></li>
                 <Link to = "/MuroNotif">
                     <li><a href="/MuroNotif">Notificaciones</a></li>
                 </Link>
@@ -49,41 +45,32 @@ export function Cargarrec() {
             <button className="two">1. Acreditar Personería</button>
             </Link>
             <Link to = "/Detalles">
-                <button className="three">2. Detalles</button> {/*que quede morado el boton con className*/}
+                <button className="one">2. Detalles</button> {/*que quede morado el boton con className*/}
             </Link>
-            <button className="one">3. Cargar Recursos</button>
+            <Link to = "/Cargarrec">
+                <button className="three">3. Cargar Recursos</button>
+            </Link>
             <Link to = "/Firma">
                 <button className="four">4. Firmar Recurso</button>
             </Link>
         </div>
-
-        <div class="Footer">
-            <Link to = "/Detalles">
+        <div className="Footer">
+            <Link to = "/Impugnarc">
                 <a><button>Anterior</button></a> 
             </Link>
-            <Link to = "/Firma">
+            <Link to = "/Cargarrec">
                 <a><button>Siguiente</button></a> 
             </Link>
             <button>Cancelar</button>
         </div>
 
-        <div className="document_box2">
-            <h3><i>Adjuntar Pruebas</i></h3>
-            <p>
-                <label>Si<input type="radio" checked="checked" name="radio"/>
-                <span className="checkmark"></span></label>
-                <label>No<input type="radio" checked="checked" name="radio"/>
-                <span className="checkmark"></span></label>
-            </p>
-
-            <form className="formpdf" id="uploadForm" enctype="multipart/form-data">
-                    <label for="pdfFile">Seleccionar archivo PDF:</label>
-                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf"/>
-                    <input style = {{backgroundColor:"#743484", color: "black", width: "auto", height: "23px", paddingTop: "5px",  border: "4px black"}} type="submit" value="Subir archivo"/>
-            </form>  
+        <div className="document_box3">
+            <h3 style={{size:"22px"}}><i>Acto reclamado</i></h3>
+            <div style={{backgroundColor: "lightgray", height:" 300px", padding: "5px 10px", margin: "0", width: "80%"}}></div> {/*aqui acomodamos el gris*/}
         </div>
+
     </div>
   )
 }
 
-export default Cargarrec
+export default Detalles

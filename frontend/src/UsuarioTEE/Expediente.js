@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import toggleSidebar  from "./sections/toggleSidebar.js";
-import "./sections/css/expediente.css"
-import { getDocLink } from './api.js';
-import { GetExpediente } from './api.js';
+import toggleSidebar  from "../sections/toggleSidebar.js";
+import "../sections/css/expediente.css"
+import { getDocLink } from '../api.js';
+import { GetExpediente } from '../api.js';
+import ENVIAR_NOTI from './EnviarNotiWinget.js'
 
 
 export function Expediente() {
   const [docUrl, setDocUrl] = useState(""); // Estado para guardar la URL del documento
   const [selectedOption, setSelectedOption] = useState("");
   const [OpcionesList, SetOpcionesList] = useState([]);
-
-  
+ 
   // Manejador del evento del botón "BUSCAR"
   const handleSearch = () => {
     const fetchData = async () => {
       
       const docUrl = await getDocLink(selectedOption);
-
       setDocUrl(docUrl);
     };
     fetchData();
@@ -33,6 +32,10 @@ export function Expediente() {
     GetOpciones();
   }
 
+  
+  
+
+  
  
 
   return (
@@ -40,10 +43,10 @@ export function Expediente() {
       
         <header style={{backgroundColor: "#743484"}}>
           <Link to = "/Entraste">
-            <a><img className="LOGO"src= {require("./sections/TEE.png" )}alt="Logo" width="150px"/></a>
+            <a><img className="LOGO"src= {require("../sections/TEEAdmin.png" )}alt="Logo" width="150px"/></a>
           </Link>
             <div className="LOGIN">
-                <img src= {require("./sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
+                <img src= {require("../sections/Login.webp" )} alt="Foto Perfil" width="50 px"/>
                 <h3>{sessionStorage.getItem('usuario')}</h3> 
             </div>
         </header>
@@ -54,15 +57,13 @@ export function Expediente() {
                     <span className="linea"></span>
                     <span className="linea"></span>
                 </button>
-                <Link to = "/Entraste">
+                <Link to = "/EntrasteTEE">
                   <li><a>Tablero</a></li>
                 </Link>
-                <Link to = "/MuroNotif">
-                    <li><a href="/MuroNotif">Notificaciones</a></li>
+                <Link to = "/MandarNotif">
+                    <li><a href="/MuroNotif">Mandar Notificación</a></li>
                 </Link>
-                <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
-                    </Link>
+                
                 
                 <li style={{backgroundColor: "#743484"}}><a>Expediente Electrónico</a></li>
             </ul>
@@ -95,13 +96,7 @@ export function Expediente() {
           </div>
         </div>
 
-        <div className='EnviarNoti'>
-          <label>Mandar Notificación</label>
-          <textarea rows="auto" cols="auto"></textarea>
-          <button><b>Enviar Notificación</b></button>
-        </div>
-        
-        
+        <ENVIAR_NOTI/>
     </div>
   )
 }

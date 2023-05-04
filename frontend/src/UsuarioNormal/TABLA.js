@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {RefreshNOTIF} from "./api";
+import {RefreshNOTIF} from "../api";
 import { Link } from "react-router-dom";
 
 

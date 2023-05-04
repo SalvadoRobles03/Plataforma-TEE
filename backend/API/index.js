@@ -44,6 +44,31 @@ app.get('/api/Usuario/:correo', function (req, res) {
     
 });
 
+app.get('/api/Magistrado/:correo', function (req, res) {
+   
+    // connect to your database
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "select * from magistrado where correo = '" + req.params.correo + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+    
+});
+
 app.get('/api/Nombre/:correo', function (req, res) {
    
     // connect to your database
@@ -69,6 +94,31 @@ app.get('/api/Nombre/:correo', function (req, res) {
     
 });
 
+app.get('/api/NombreMagis/:correo', function (req, res) {
+   
+    // connect to your database
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "select nombres from magistrado where correo = '" + req.params.correo + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+    
+});
+
 app.get('/api/Apellido/:correo', function (req, res) {
    
     // connect to your database
@@ -81,6 +131,31 @@ app.get('/api/Apellido/:correo', function (req, res) {
            
         // query to the database and get the records
         sentencia = "select apellidoPaterno from Usuario where correo = '" + req.params.correo + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+    
+});
+
+app.get('/api/ApellidoMagis/:correo', function (req, res) {
+   
+    // connect to your database
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records
+        sentencia = "select apellidos from magistrado where correo = '" + req.params.correo + "'"; 
         console.log(sentencia);
         request.query(sentencia, function (err, recordset) {
             
@@ -141,6 +216,70 @@ app.get('/api/NOTIF/:ID', function (req, res) {
     });
 
 });
+
+app.post('/api/Insert', (req, res) => {
+    sql.connect(config, (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('No se puede conectar a la base de datos.');
+      } else {
+        const request = new sql.Request();
+        const { nombres, apellidoPaterno, apellidoMaterno, rfc, correo, contrasena } = req.body;
+  
+        // Check if email already exists
+        const checkEmailQuery = `SELECT correo FROM Usuario WHERE correo = '${correo}'`;
+        request.query(checkEmailQuery, (err, result) => {
+          if (err) {
+            console.log(err);
+            res.status(500).send('Error al verificar si el correo ya existe en la base de datos.');
+          } else {
+            if (result.recordset.length > 0) {
+              // Email already exists in database
+              res.status(409).send('El correo ya existe en la base de datos.');
+            } else {
+              // Email does not exist in database, insert new record
+              const insertQuery = `INSERT INTO Usuario (nombres,apellidoPaterno,apellidoMaterno,rfc,correo,contrasena,TipoUsuario) 
+                VALUES ('${nombres}','${apellidoPaterno}','${apellidoMaterno}','${rfc}','${correo}','${contrasena}','Externo')`;
+  
+              request.query(insertQuery, (err, result) => {
+                if (err) {
+                  console.log(err);
+                  res.status(500).send('No se pudo crear el registro.');
+                } else {
+                  res.status(201).send('Registro creado.');
+                }
+              });
+            }
+          }
+        });
+      }
+    });
+  });
+  
+  // Create
+  app.post('/api/InsertNotif', (req, res) => {
+      sql.connect(config, err => {
+          if (err) {
+              console.log(err);
+              res.status(500).send('No se puede connectar a la base de datos.');
+          } else {
+              const request = new sql.Request();
+              const { fecha_envio, asunto, contenido} = req.body;
+  
+              sentencia = ` INSERT INTO Notificacion (fecha_envio,asunto,contenido,estado) 
+              VALUES ('${fecha_envio}','${asunto}','${contenido}', CAST('0' AS BINARY))`;
+              console.log(sentencia);
+              request.query(sentencia, (err, result) => {
+              if (err) {
+                  console.log(err);
+                  res.status(500).send('No se pudo enviar la notificación');
+              } else {
+                  res.status(200).send('Notificación enviada con éxito');
+              }
+              });
+          }
+      });
+  });
 
 
 app.get('/api/DOC/:Folio', function (req, res) {
