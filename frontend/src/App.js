@@ -14,7 +14,7 @@ import Cargarrec from './UsuarioNormal/Cargarrec';
 import Expediente from './UsuarioTEE/Expediente';
 import Firma from './UsuarioNormal/Firma';
 import MandarNotif from './UsuarioTEE/MandarNotif'
-
+import Contacto from './UsuarioTEE/Contacto'
 
 
 export function App() {
@@ -27,6 +27,7 @@ export function App() {
             <Route path ="/LoginTEE" element={<LoginTEE/>}/>
             <Route path = "Registro" element = {<Registro/>}/>
             <Route path ="/Entraste" element={<Entraste/>}/>
+            <Route path ="/Correo" element={<Contacto/>}></Route>
             <Route path ="/EntrasteTEE" element={<EntrasteTEE/>}/>
             <Route path = "/MuroNotif" element= {<MuroNotif/>}></Route>
             <Route path = "/MandarNotif" element= {<MandarNotif/>}></Route>

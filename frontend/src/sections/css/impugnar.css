@@ -62,8 +62,9 @@
       text-align: center;
       
       margin-top: calc(75px + 15px + 60px + 20px);
-      left: 650px;
-  
+      left: 350px;
+      width: 60%;
+      height: 40%;
       
     }
   
@@ -99,12 +100,11 @@
   .adjuntar-archivos input{
     background-color: #a59e9e;
     
-    
   }
 
   .MENU2{
     align-items: center;
-    margin-left:250px;
+    margin-left:300px;
     margin-top: calc(75px + 15px);
     font-weight: bold;
     width:auto;

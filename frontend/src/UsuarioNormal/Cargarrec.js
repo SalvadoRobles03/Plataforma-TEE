@@ -1,22 +1,17 @@
 import toggleSidebar  from "../sections/toggleSidebar.js";
 import { Link } from "react-router-dom";
 import "../sections/css/cargar.css"
+import { useState } from "react";
 
 
 export function Cargarrec() {
+
+    const [Texto,SetTexto]=useState("");
+
   return (
     <div>
 
-        <head>
-            <meta charset="UTF-8"/>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>Impugnar/Comparecer</title>
-            <link rel="icon" type="image/png" href="./LOGO.png"/>
-            <link rel="stylesheet" href="./sections/css/detalles.css"/>
-            <link rel="stylesheet" href="./sections/css/detalles.css"/>
-            <script src="5.js"></script> 
-        </head>
+        
         <header style={{backgroundColor: "#743484"}}>
             <Link to = "/Entraste">
                 <a><img className="LOGO"src= {require("../sections/TEE.png" )}alt="Logo" width="150px"/></a>
@@ -37,24 +32,28 @@ export function Cargarrec() {
                     <li><a>Tablero</a></li>
                 </Link>
                 <Link to = "/MuroNotif">
-                    <li><a href="/MuroNotif">Notificaciones</a></li>
+                    <li><a>Notificaciones</a></li>
                 </Link>
-                <li style={{backgroundColor: "#743484"}}><a>Impugnar/Comparecer</a></li>
-                <li><a href="../Garzita/9.html">Expediente Electrónico</a></li>
+                <Link to = "/Impugnarc">
+                    <li style={{backgroundColor: "#743484"}}><a>Subir Archivos</a></li>
+                </Link>
             </ul>
         </div>
 
         <div className="MENU2">
             <Link to = "/Impugnarc">
-            <button className="two">1. Acreditar Personería</button>
-            </Link>
+                <button className="one" style={{backgroundColor:"#c1a7c7"}}>1. Adjuntar Demanda</button>
+            </Link>            
             <Link to = "/Detalles">
-                <button className="three">2. Detalles</button> {/*que quede morado el boton con className*/}
+                <button className="two" style={{backgroundColor:"#c1a7c7"}}>2. Adjuntar Pruebas</button>
             </Link>
-            <button className="one">3. Cargar Recursos</button>
+            <Link to = "/Cargarrec">
+                <button className="three" style={{backgroundColor:"#743484"}}>3. Comentarios</button>
+            </Link>
             <Link to = "/Firma">
-                <button className="four">4. Firmar Recurso</button>
+                <button className="four">4. Firma</button>
             </Link>
+
         </div>
 
         <div class="Footer">
@@ -64,24 +63,13 @@ export function Cargarrec() {
             <Link to = "/Firma">
                 <a><button>Siguiente</button></a> 
             </Link>
-            <button>Cancelar</button>
+            
         </div>
-
-        <div className="document_box2">
-            <h3><i>Adjuntar Pruebas</i></h3>
-            <p>
-                <label>Si<input type="radio" checked="checked" name="radio"/>
-                <span className="checkmark"></span></label>
-                <label>No<input type="radio" checked="checked" name="radio"/>
-                <span className="checkmark"></span></label>
-            </p>
-
-            <form className="formpdf" id="uploadForm" enctype="multipart/form-data">
-                    <label for="pdfFile">Seleccionar archivo PDF:</label>
-                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf"/>
-                    <input style = {{backgroundColor:"#743484", color: "black", width: "auto", height: "23px", paddingTop: "5px",  border: "4px black"}} type="submit" value="Subir archivo"/>
-            </form>  
-        </div>
+            <div className="Comentarios">
+                <textarea rows="auto" cols="auto" placeholder='Comentario..' maxLength={5000} value={Texto} onChange={e => SetTexto(e.target.value)}></textarea>
+                <input type="submit"/>
+            </div>
+        
     </div>
   )
 }
