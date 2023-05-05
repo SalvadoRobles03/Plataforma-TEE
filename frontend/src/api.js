@@ -80,9 +80,11 @@ const GetNOTIF = async (id) => {
   const GetUsuario = async (id) => {
     const response = await axios.get(`http://localhost:2023/api/userFolio/${id}`);
     const data = response.data;
-    const usuario = parseInt(data.Usuario);
-    return usuario;
-  };
+    const usuario = parseInt(data.usuario);
+    const correo = data.correo;
+    return { usuario, correo }; // se retornan ambos valores en un objeto
+};
+
 
 
 const validarUsuario = async (username, password) => {

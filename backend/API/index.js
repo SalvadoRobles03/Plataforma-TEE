@@ -281,29 +281,59 @@ app.get('/api/DOC/:Folio', function (req, res) {
 
 });
 
+app.post('/api/InsertNotif', (req, res) => {
+    sql.connect(config, err => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('No se puede connectar a la base de datos.');
+        } else {
+            const request = new sql.Request();
+            const { fecha_envio, asunto, contenido,receptor} = req.body;
+
+            sentencia = ` INSERT INTO Notificacion (fecha_envio,asunto,contenido,estado,receptor) 
+            VALUES ('${fecha_envio}','${asunto}','${contenido}', CAST('0' AS BINARY),${receptor})`;
+            console.log(sentencia);
+            request.query(sentencia, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send('No se pudo enviar la notificación');
+            } else {
+                res.status(200).send('Notificación enviada con éxito');
+            }
+            });
+        }
+    });
+});
+
 app.get('/api/userFolio/:Folio', function (req, res) {
 
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
+    sql.connect(config, async function (err) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({ error: "Error al conectar con la base de datos" });
+        }
 
-        // create Request object
-        var request = new sql.Request();
-           
-        // query to the database and get the records 
-        sentencia = "select Usuario from Expedientes where Folio_Expediente = '" + req.params.Folio + "'"; 
-        console.log(sentencia);
-        request.query(sentencia, function (err, recordset) {
-            
-            if (err) console.log(err)
+        // create Request objects for each query
+        var usuarioRequest = new sql.Request();
+        var mailRequest = new sql.Request();
 
-            // send records as a response
-            res.send(recordset.recordset[0]);
-            
-        });
+        // query the database and get the records using Promises
+        var usuarioPromise = usuarioRequest.query("select Usuario from Expedientes where Folio_Expediente = '" + req.params.Folio + "'");
+        var mailPromise = mailRequest.query("SELECT t1.correo FROM Usuario t1 INNER JOIN Expedientes t2 ON t1.id_usuario = t2.Usuario WHERE t2.Folio_Expediente = '" + req.params.Folio + "'");
+
+        // wait for both Promises to resolve using Promise.all()
+        try {
+            var [usuarioResult, mailResult] = await Promise.all([usuarioPromise, mailPromise]);
+            var usuario = usuarioResult.recordset[0].Usuario;
+            var correo = mailResult.recordset[0].correo;
+            return res.send({ usuario: usuario, correo: correo });
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send({ error: "Error al consultar la base de datos" });
+        }
     });
-
 });
+
 
 app.get('/api/Expediente/:Folio', function (req, res) {
 

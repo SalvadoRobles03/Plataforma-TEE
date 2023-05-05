@@ -6,6 +6,7 @@ import toggleSidebar  from "../sections/toggleSidebar.js";
 import { Link } from "react-router-dom";
 import { insertarNotificacion } from '../api.js';
 import { GetUsuario} from '../api.js';
+import emailjs from 'emailjs-com';
 
 
 
@@ -14,18 +15,45 @@ export function MuroNotif() {
     const [Asunto, SetAsunto]=useState('');
     const [Texto, SetTexto]=useState('');
     const [timeClicked, setTimeClicked] = useState(null);
+
+    const sendEmail = (correo) => {
+        emailjs
+          .send(
+            "service_z2prh2b",
+            "template_9v2ymvq",
+            {
+              from_name: "TEE",
+              to_name: sessionStorage.getItem("usuario"),
+              message:
+                "Tienes una nueva notificación en la plataforma TEE, Inicia sesión para verla.",
+              to: correo,
+            },
+            "CTncan4uJLqgrNK0Q"
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            function (error) {
+              console.log("FAILED...", error);
+            }
+          );
+      };
+      
    
   
     const handleEnviarNotificacion= async (event) => {
         event.preventDefault();
         
+        
         let fechaActual = new Date();
         fechaActual.setHours(fechaActual.getHours() - 6);
         fechaActual= fechaActual.toISOString();
         setTimeClicked(fechaActual);
-        const Receptor= await GetUsuario(selectedFolio)
-        console.log(Receptor)
-        const response = await insertarNotificacion(timeClicked,Asunto,Texto,Receptor);
+        const valores = await GetUsuario(selectedFolio)
+        console.log(valores.usuario)
+        console.log(valores.correo)
+        const response = await insertarNotificacion(timeClicked,Asunto,Texto,valores.usuario);
         console.log(Asunto);
         console.log(Texto)
         if (response.status == 200) {  
@@ -33,6 +61,7 @@ export function MuroNotif() {
             alert("Error")
           else 
             alert("Notificación enviada con éxito")
+            sendEmail(valores.correo);
       } else {
         alert("Error: " + response.status);
       }
