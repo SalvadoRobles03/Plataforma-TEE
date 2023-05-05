@@ -58,9 +58,9 @@
       position: absolute;
       background-color: #743484;
       padding: 40px;
-      
+      right: 100px;
       text-align: center;
-      
+      top:50px;
       margin-top: calc(75px + 15px + 60px + 20px);
       align-items: center;
   

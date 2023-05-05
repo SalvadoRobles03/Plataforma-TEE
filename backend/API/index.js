@@ -218,69 +218,44 @@ app.get('/api/NOTIF/:ID', function (req, res) {
 });
 
 app.post('/api/Insert', (req, res) => {
-    sql.connect(config, (err) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('No se puede conectar a la base de datos.');
-      } else {
-        const request = new sql.Request();
-        const { nombres, apellidoPaterno, apellidoMaterno, rfc, correo, contrasena } = req.body;
-  
-        // Check if email already exists
-        const checkEmailQuery = `SELECT correo FROM Usuario WHERE correo = '${correo}'`;
-        request.query(checkEmailQuery, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Error al verificar si el correo ya existe en la base de datos.');
-          } else {
-            if (result.recordset.length > 0) {
-              // Email already exists in database
-              res.status(409).send('El correo ya existe en la base de datos.');
-            } else {
-              // Email does not exist in database, insert new record
-              const insertQuery = `INSERT INTO Usuario (nombres,apellidoPaterno,apellidoMaterno,rfc,correo,contrasena,TipoUsuario) 
-                VALUES ('${nombres}','${apellidoPaterno}','${apellidoMaterno}','${rfc}','${correo}','${contrasena}','Externo')`;
-  
-              request.query(insertQuery, (err, result) => {
-                if (err) {
-                  console.log(err);
-                  res.status(500).send('No se pudo crear el registro.');
-                } else {
-                  res.status(201).send('Registro creado.');
-                }
-              });
-            }
-          }
-        });
-      }
-    });
-  });
-  
-  // Create
-  app.post('/api/InsertNotif', (req, res) => {
-      sql.connect(config, err => {
-          if (err) {
-              console.log(err);
-              res.status(500).send('No se puede connectar a la base de datos.');
-          } else {
-              const request = new sql.Request();
-              const { fecha_envio, asunto, contenido,receptor} = req.body;
-  
-              sentencia = ` INSERT INTO Notificacion (fecha_envio,asunto,contenido,estado,receptor) 
-              VALUES ('${fecha_envio}','${asunto}','${contenido}', CAST('0' AS BINARY),${receptor})`;
-              console.log(sentencia);
-              request.query(sentencia, (err, result) => {
-              if (err) {
-                  console.log(err);
-                  res.status(500).send('No se pudo enviar la notificación');
-              } else {
-                  res.status(200).send('Notificación enviada con éxito');
-              }
-              });
-          }
-      });
-  });
+  sql.connect(config, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('No se puede conectar a la base de datos.');
+    } else {
+      const request = new sql.Request();
+      const { nombres, apellidoPaterno, apellidoMaterno, rfc, correo, contrasena } = req.body;
 
+      // Check if email already exists
+      const checkEmailQuery = `SELECT correo FROM Usuario WHERE correo = '${correo}'`;
+      request.query(checkEmailQuery, (err, result) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Error al verificar si el correo ya existe en la base de datos.');
+        } else {
+          if (result.recordset.length > 0) {
+            // Email already exists in database
+            res.status(409).send('El correo ya existe en la base de datos.');
+          } else {
+            // Email does not exist in database, insert new record
+            const insertQuery = `INSERT INTO Usuario (nombres,apellidoPaterno,apellidoMaterno,rfc,correo,contrasena,TipoUsuario) 
+              VALUES ('${nombres}','${apellidoPaterno}','${apellidoMaterno}','${rfc}','${correo}','${contrasena}','Externo')`;
+
+            request.query(insertQuery, (err, result) => {
+              if (err) {
+                console.log(err);
+                res.status(500).send('No se pudo crear el registro.');
+              } else {
+                res.status(201).send('Registro creado.');
+              }
+            });
+          }
+        }
+      });
+    }
+  });
+});
+   
 
 app.get('/api/DOC/:Folio', function (req, res) {
 

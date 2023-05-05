@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+<<<<<<< HEAD:frontend/src/UsuarioTEE/Expediente.js
 import toggleSidebar  from "../sections/toggleSidebar.js";
 import "../sections/css/expediente.css"
 import { GetUsuario, getDocLink } from '../api.js';
 import { GetExpediente } from '../api.js';
 import ENVIAR_NOTI from './EnviarNotiWinget.js'
 import { insertarNotificacion } from '../api.js';
+=======
+import toggleSidebar  from "./sections/toggleSidebar.js";
+import "./sections/css/expediente.css"
+import { getDocLink } from './api.js';
+import { GetExpediente } from './api.js';
+import { insertarNotificacion } from './api.js';
+>>>>>>> f7296b5 (Buscar expedientes):frontend/src/Expediente.js
 
 
 export function Expediente() {
@@ -13,10 +21,19 @@ export function Expediente() {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedFolio, setSelectedFolio] = useState("");
   const [OpcionesList, SetOpcionesList] = useState([]);
+<<<<<<< HEAD:frontend/src/UsuarioTEE/Expediente.js
   const [Asunto, SetAsunto]=useState('');
   const [Texto, SetTexto]=useState('');
   const [timeClicked, setTimeClicked] = useState(null);
  
+=======
+  const [formData, setFormData] = useState({ //Para comparar más adelante los inputs
+    asunto: "",
+    texto: "",
+  });
+  const [timeClicked, setTimeClicked] = useState(null);
+
+>>>>>>> f7296b5 (Buscar expedientes):frontend/src/Expediente.js
   // Manejador del evento del botón "BUSCAR"
   const handleSearch = () => {
     const fetchData = async () => {
@@ -37,6 +54,7 @@ export function Expediente() {
     GetOpciones();
   }
 
+<<<<<<< HEAD:frontend/src/UsuarioTEE/Expediente.js
   const handleEnviarNotificacion= async (event) => {
       event.preventDefault();
       
@@ -59,6 +77,36 @@ export function Expediente() {
     }
    
     };
+=======
+  const handleNotificacion = (event) => {
+    setFormData(event.target.value); 
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+   }));
+  };
+  
+
+  const handleEnviarNotificacion= async (event) => {
+    event.preventDefault();
+    const currentTime = new Date();
+    setTimeClicked(currentTime);
+    const response = await insertarNotificacion(currentTime,formData.asunto,formData.texto);
+    console.log(formData);
+    if (response.status == 201) {  // Post regresa 201 cuando hay exito
+      if (response.data == "")
+        alert("Error")
+      else 
+        alert("Notificación enviada con éxito")
+  } else {
+    alert("Error: " + response.status);
+  }
+ 
+  };
+
+ 
+>>>>>>> f7296b5 (Buscar expedientes):frontend/src/Expediente.js
 
   return (
     <div>
@@ -120,10 +168,17 @@ export function Expediente() {
 
         <div className='EnviarNoti'>
         <h3 className="titulo">Enviar notificación</h3>
+<<<<<<< HEAD:frontend/src/UsuarioTEE/Expediente.js
         <input id="asunto-input" type="text" placeholder="Asunto" maxLength={50} value={Asunto} onChange={e => SetAsunto(e.target.value)} />
         <textarea rows="auto" cols="auto" placeholder='Texto..' maxLength={5000} value={Texto} onChange={e => SetTexto(e.target.value)}></textarea>
         <button onClick={handleEnviarNotificacion}><b>Enviar Notificación</b></button>
       </div>
+=======
+          <input id="asunto-input" type="text" placeholder="Asunto" maxLength={50} value={formData.asunto} onChange={handleNotificacion} />
+          <textarea rows="auto" cols="auto" placeholder='Texto..' maxLength={5000} value={formData.texto} onChange={handleNotificacion}></textarea>
+          <button onClick={handleEnviarNotificacion}><b>Enviar Notificación</b></button>
+        </div>
+>>>>>>> f7296b5 (Buscar expedientes):frontend/src/Expediente.js
     </div>
   )
 }

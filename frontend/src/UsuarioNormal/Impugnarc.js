@@ -46,12 +46,12 @@ export function Impugnarc() {
         </div>
 
         <div className="MENU2">
-            <button className="one">1. Acreditar Personería</button>
-            <Link to = "/Detalles">
-                <button className="two">2. Detalles</button>
-            </Link>
+            <button className="one">1. Adjuntar demanda</button>
             <Link to = "/Cargarrec">
-                <button className="three">3. Cargar Recursos</button>
+                <button className="two">2. Adjuntar pruebas</button>
+            </Link>
+            <Link to = "/Detalles">
+                <button className="three">3. Comentarios adicionales</button>
             </Link>
             <Link to = "/Firma">
                 <button className="four">4. Firmar Recurso</button>
