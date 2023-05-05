@@ -57,22 +57,15 @@ export function Notif() {
               <span className="linea"></span>
               <span className="linea"></span>
             </button>
-            <Link to="/Entraste">
-              <li>
-                <a>Tablero</a>
-              </li>
-            </Link>
-            <li style={{ backgroundColor: "#743484" }}>
-              <a href="/MuroNotif">Notificaciones</a>
-            </li>
-            <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
-                    </Link>
-            <Link to="/Expediente">
-              <li>
-                <a>Expediente Electrónico</a>
-              </li>
-            </Link>
+            <Link to = "/Entraste">
+                    <li><a>Tablero</a></li>
+                </Link>
+                <Link to = "/MuroNotif">
+                    <li style={{backgroundColor: "#743484"}}><a>Notificaciones</a></li>
+                </Link>
+                <Link to = "/Impugnarc">
+                    <li><a>Subir Archivos</a></li>
+                </Link>
           </ul>
         </div>
 

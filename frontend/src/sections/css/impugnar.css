@@ -58,14 +58,17 @@
       position: absolute;
       background-color: #743484;
       padding: 40px;
-      right: 100px;
+      
       text-align: center;
-      top:50px;
+      
       margin-top: calc(75px + 15px + 60px + 20px);
-      align-items: center;
-  
+      left: 350px;
+      width: 60%;
+      height: 40%;
       
     }
+  
+  
   
     .adjuntar-archivos div p{
       background-color:#a59e9e;
@@ -97,12 +100,11 @@
   .adjuntar-archivos input{
     background-color: #a59e9e;
     
-    
   }
 
   .MENU2{
     align-items: center;
-    margin-left:250px;
+    margin-left:300px;
     margin-top: calc(75px + 15px);
     font-weight: bold;
     width:auto;

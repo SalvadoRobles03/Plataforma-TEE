@@ -36,33 +36,36 @@ export  function Firma() {
                     <li><a>Tablero</a></li>
                 </Link>
                 <Link to = "/MuroNotif">
-                    <li><a href="/MuroNotif">Notificaciones</a></li>
+                    <li><a>Notificaciones</a></li>
                 </Link>
-                <li style={{backgroundColor: "#743484"}}><a>Impugnar/Comparecer</a></li>
-                <Link to= "/Expediente">
-                    <li><a>Expediente Electrónico</a></li>
+                <Link to = "/Impugnarc">
+                    <li style={{backgroundColor: "#743484"}}><a>Subir Archivos</a></li>
                 </Link>
             </ul>
         </div>
 
         <div className="MENU2">
-            <Link to = "/Impugnarc">
-                <button className="two">1. Acreditar Personería</button>
+            <Link to= "/Impugnarc">
+                <button className="one" style={{backgroundColor:"#c1a7c7"}}>1. Adjuntar Demanda</button>
+
             </Link>
             <Link to = "/Detalles">
-                <button className="three">2. Detalles</button> {/*que quede morado el boton con className*/}
+                <button className="two" style={{backgroundColor:"#c1a7c7"}}>2. Adjuntar Pruebas</button>
             </Link>
             <Link to = "/Cargarrec">
-                <button className="four">3. Cargar Recursos</button>
+                <button className="three" style={{backgroundColor:"#c1a7c7"}}>3. Comentarios</button>
             </Link>
-            <button className="one">4. Firmar Recurso</button>
+            <Link to = "/Firma">
+                <button className="four" style={{backgroundColor:"#743484"}}>4. Firma</button>
+            </Link>
+
         </div>
 
         <div class="Footer">
             <Link to = "/Cargarrec">
                 <a><button>Anterior</button></a> 
             </Link>
-            <button>Cancelar</button>
+            
         </div>
     
         <div class="preview-container">

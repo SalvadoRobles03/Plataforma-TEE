@@ -5,16 +5,7 @@ import "../sections/css/detalles.css"
 export  function Detalles() {
   return (
     <div>
-        <head>
-            <meta charset="UTF-8"/>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>Impugnar/Comparecer</title>
-            <link rel="icon" type="image/png" href="./LOGO.png"/>
-            <link rel="stylesheet" href="./sections/css/impugnar.css"/>
-            <link rel="stylesheet" href="./sections/css/Plantilla.css"/>
-            <script src="5.js"></script> 
-        </head>
+        
         <header style={{backgroundColor: "#743484"}}>
             <Link to = "/Entraste">
                 <a><img className="LOGO"src= {require("../sections/TEE.png" )}alt="Logo" width="150px"/></a>
@@ -31,28 +22,33 @@ export  function Detalles() {
                     <span className="linea"></span>
                     <span className="linea"></span>
                 </button>
-                <li><a href="#">Tablero</a></li>
-                <Link to = "/MuroNotif">
-                    <li><a href="/MuroNotif">Notificaciones</a></li>
+                <Link to = "/Entraste">
+                    <li><a>Tablero</a></li>
                 </Link>
-                <li style={{backgroundColor: "#743484"}}><a>Impugnar/Comparecer</a></li>
-                <li><a href="../Garzita/9.html">Expediente Electrónico</a></li>
+                <Link to = "/MuroNotif">
+                    <li><a>Notificaciones</a></li>
+                </Link>
+                <Link to = "/Impugnarc">
+                    <li style={{backgroundColor: "#743484"}}><a>Subir Archivos</a></li>
+                </Link>
+                
             </ul>
         </div>
 
         <div className="MENU2">
             <Link to = "/Impugnarc">
-            <button className="two">1. Acreditar Personería</button>
+                <button className="one" style={{backgroundColor:"#c1a7c7"}}>1. Adjuntar Demanda</button>
             </Link>
             <Link to = "/Detalles">
-                <button className="one">2. Detalles</button> {/*que quede morado el boton con className*/}
+                <button className="two" style={{backgroundColor:"#743484"}}>2. Adjuntar Pruebas</button>
             </Link>
             <Link to = "/Cargarrec">
-                <button className="three">3. Cargar Recursos</button>
+                <button className="three">3. Comentarios</button>
             </Link>
             <Link to = "/Firma">
-                <button className="four">4. Firmar Recurso</button>
+                <button className="four">4. Firma</button>
             </Link>
+
         </div>
         <div className="Footer">
             <Link to = "/Impugnarc">
@@ -61,12 +57,15 @@ export  function Detalles() {
             <Link to = "/Cargarrec">
                 <a><button>Siguiente</button></a> 
             </Link>
-            <button>Cancelar</button>
+            
         </div>
 
-        <div className="document_box3">
-            <h3 style={{size:"22px"}}><i>Acto reclamado</i></h3>
-            <div style={{backgroundColor: "lightgray", height:" 300px", padding: "5px 10px", margin: "0", width: "80%"}}></div> {/*aqui acomodamos el gris*/}
+        <div className="adjuntar-archivos" id="drop-area">
+        <div className="titulo1"><h3>Adjuntar Pruebas</h3></div>
+            <div >
+                <p>Arrastre aquí sus archivos</p>
+                <input type="file" id="file-input" accept=".pdf,.doc,.docx" multiple/>      
+            </div>
         </div>
 
     </div>

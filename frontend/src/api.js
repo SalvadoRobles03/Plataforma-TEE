@@ -148,21 +148,13 @@ const insertarUsuario = async (name, apelliodp,apellidom,rfc,email,password) => 
     return response;
 };
 
-<<<<<<< HEAD
 const insertarNotificacion = async (fechae,asunto,contenido,receptor) => {
-=======
-const insertarNotificacion = async (fechae,asunto,contenido) => {
->>>>>>> f7296b5 (Buscar expedientes)
     
     const jsonData = JSON.stringify({
         fecha_envio: fechae,
         asunto: asunto,
-<<<<<<< HEAD
         contenido: contenido,
         receptor: receptor
-=======
-        contenido: contenido
->>>>>>> f7296b5 (Buscar expedientes)
     });
     const response = await axios.post('http://localhost:2023/api/InsertNotif/',jsonData , {
         headers: {
@@ -174,9 +166,4 @@ const insertarNotificacion = async (fechae,asunto,contenido) => {
     return response;
 };
 
-<<<<<<< HEAD
 export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario};
-=======
-export {validarUsuario, getCorreo, usuarioAutenticado, getNombre, getApellido, GetNOTIF, getDocLink, GetExpediente,insertarUsuario,insertarNotificacion};
-
->>>>>>> f7296b5 (Buscar expedientes)

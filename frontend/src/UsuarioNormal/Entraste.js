@@ -36,20 +36,23 @@ export function Entraste() {
                             <span className="linea"></span>
                             <span className="linea"></span>
                     </button>
-                    <li style={{backgroundColor: "#743484"}}><a href="#">Tablero</a></li>
-                    <Link to = "/MuroNotif">
-                        <li><a>Notificaciones</a></li>
-                    </Link>
-                    <Link to = "/Impugnarc">
-                        <li><a>Impugnar/Comparecer</a></li>
-                    </Link>
-                    <Link to = "/Expediente">
-                        <li><a>Expediente Electrónico</a></li>
-                    </Link>
+                    <Link to = "/Entraste">
+                    <li style={{backgroundColor: "#743484"}}><a>Tablero</a></li>
+                </Link>
+                <Link to = "/MuroNotif">
+                    <li><a>Notificaciones</a></li>
+                </Link>
+                <Link to = "/Impugnarc">
+                    <li><a>Subir Archivos</a></li>
+                </Link>
                 </ul>
                 </div>
 
-                <h1>BIENVENIDO</h1>
+                <div className="Presentacion">
+                    <h1>BIENVENIDO</h1>
+                    <h2>Bienvenido a la plataforma de del Tribunal Estatal Electoral</h2>
+                    <img src={require("../sections/TEE.png" )} alt="logo" width="40%"/>
+                </div>
 
                 
         </body>
