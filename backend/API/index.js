@@ -315,18 +315,21 @@ app.get('/api/userFolio/:Folio', function (req, res) {
 
         // create Request objects for each query
         var usuarioRequest = new sql.Request();
+        var NombreRquest = new sql.Request();
         var mailRequest = new sql.Request();
 
         // query the database and get the records using Promises
         var usuarioPromise = usuarioRequest.query("select Usuario from Expedientes where Folio_Expediente = '" + req.params.Folio + "'");
         var mailPromise = mailRequest.query("SELECT t1.correo FROM Usuario t1 INNER JOIN Expedientes t2 ON t1.id_usuario = t2.Usuario WHERE t2.Folio_Expediente = '" + req.params.Folio + "'");
+        var NombrePromise = mailRequest.query("SELECT t1.nombres FROM Usuario t1 INNER JOIN Expedientes t2 ON t1.id_usuario = t2.Usuario WHERE t2.Folio_Expediente = '" + req.params.Folio + "'");
 
         // wait for both Promises to resolve using Promise.all()
         try {
-            var [usuarioResult, mailResult] = await Promise.all([usuarioPromise, mailPromise]);
+            var [usuarioResult, mailResult,nombreResult] = await Promise.all([usuarioPromise, mailPromise, NombrePromise]);
             var usuario = usuarioResult.recordset[0].Usuario;
             var correo = mailResult.recordset[0].correo;
-            return res.send({ usuario: usuario, correo: correo });
+            var Nombre = nombreResult.recordset[0].nombres;
+            return res.send({ id_usuario: usuario, correo: correo, Nombre_Usuario:Nombre });
         } catch (error) {
             console.log(error);
             return res.status(500).send({ error: "Error al consultar la base de datos" });

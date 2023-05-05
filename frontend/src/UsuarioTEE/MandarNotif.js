@@ -16,14 +16,14 @@ export function MuroNotif() {
     const [Texto, SetTexto]=useState('');
     const [timeClicked, setTimeClicked] = useState(null);
 
-    const sendEmail = (correo) => {
+    const sendEmail = (correo,nombre) => {
         emailjs
           .send(
             "service_z2prh2b",
             "template_9v2ymvq",
             {
               from_name: "TEE",
-              to_name: sessionStorage.getItem("usuario"),
+              to_name: nombre,
               message:
                 "Tienes una nueva notificación en la plataforma TEE, Inicia sesión para verla.",
               to: correo,
@@ -51,17 +51,19 @@ export function MuroNotif() {
         fechaActual= fechaActual.toISOString();
         setTimeClicked(fechaActual);
         const valores = await GetUsuario(selectedFolio)
-        console.log(valores.usuario)
+        console.log(valores.id_usuario)
+        console.log(valores.Nombre_Usuario)
         console.log(valores.correo)
-        const response = await insertarNotificacion(timeClicked,Asunto,Texto,valores.usuario);
+        const response = await insertarNotificacion(timeClicked,Asunto,Texto,valores.id_usuario);
         console.log(Asunto);
-        console.log(Texto)
+        console.log(Texto);
+        
         if (response.status == 200) {  
           if (response.data == "")
             alert("Error")
           else 
             alert("Notificación enviada con éxito")
-            sendEmail(valores.correo);
+            sendEmail(valores.correo,valores.Nombre_Usuario);
       } else {
         alert("Error: " + response.status);
       }
