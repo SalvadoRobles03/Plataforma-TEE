@@ -264,10 +264,10 @@ app.post('/api/Insert', (req, res) => {
               res.status(500).send('No se puede connectar a la base de datos.');
           } else {
               const request = new sql.Request();
-              const { fecha_envio, asunto, contenido} = req.body;
+              const { fecha_envio, asunto, contenido,receptor} = req.body;
   
-              sentencia = ` INSERT INTO Notificacion (fecha_envio,asunto,contenido,estado) 
-              VALUES ('${fecha_envio}','${asunto}','${contenido}', CAST('0' AS BINARY))`;
+              sentencia = ` INSERT INTO Notificacion (fecha_envio,asunto,contenido,estado,receptor) 
+              VALUES ('${fecha_envio}','${asunto}','${contenido}', CAST('0' AS BINARY),${receptor})`;
               console.log(sentencia);
               request.query(sentencia, (err, result) => {
               if (err) {
@@ -293,6 +293,30 @@ app.get('/api/DOC/:Folio', function (req, res) {
            
         // query to the database and get the records
         sentencia = "select Document_link from Documentos where Folio_Documento = '" + req.params.Folio + "'"; 
+        console.log(sentencia);
+        request.query(sentencia, function (err, recordset) {
+            
+            if (err) console.log(err)
+
+            // send records as a response
+            res.send(recordset.recordset[0]);
+            
+        });
+    });
+
+});
+
+app.get('/api/userFolio/:Folio', function (req, res) {
+
+    sql.connect(config, function (err) {
+    
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+           
+        // query to the database and get the records 
+        sentencia = "select Usuario from Expedientes where Folio_Expediente = '" + req.params.Folio + "'"; 
         console.log(sentencia);
         request.query(sentencia, function (err, recordset) {
             

@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import toggleSidebar  from "../sections/toggleSidebar.js";
 import "../sections/css/expediente.css"
-import { getDocLink } from '../api.js';
+import { GetUsuario, getDocLink } from '../api.js';
 import { GetExpediente } from '../api.js';
 import ENVIAR_NOTI from './EnviarNotiWinget.js'
+import { insertarNotificacion } from '../api.js';
 
 
 export function Expediente() {
   const [docUrl, setDocUrl] = useState(""); // Estado para guardar la URL del documento
   const [selectedOption, setSelectedOption] = useState("");
+  const [selectedFolio, setSelectedFolio] = useState("");
   const [OpcionesList, SetOpcionesList] = useState([]);
+  const [Asunto, SetAsunto]=useState('');
+  const [Texto, SetTexto]=useState('');
+  const [timeClicked, setTimeClicked] = useState(null);
  
   // Manejador del evento del botón "BUSCAR"
   const handleSearch = () => {
@@ -25,18 +30,35 @@ export function Expediente() {
   const CargarExpediente = () =>{
     const GetOpciones = async () => {
       const Folio_Expediente = document.querySelector('#folio-input').value;
+      setSelectedFolio(Folio_Expediente);
       const opciones = await GetExpediente(Folio_Expediente);
-
       SetOpcionesList(opciones);
     };
     GetOpciones();
   }
 
-  
-  
-
-  
- 
+  const handleEnviarNotificacion= async (event) => {
+      event.preventDefault();
+      
+      let fechaActual = new Date();
+      fechaActual.setHours(fechaActual.getHours() - 6);
+      fechaActual= fechaActual.toISOString();
+      setTimeClicked(fechaActual);
+      const Receptor= await GetUsuario(selectedFolio)
+      console.log(Receptor)
+      const response = await insertarNotificacion(timeClicked,Asunto,Texto,Receptor);
+      console.log(Asunto);
+      console.log(Texto)
+      if (response.status == 200) {  
+        if (response.data == "")
+          alert("Error")
+        else 
+          alert("Notificación enviada con éxito")
+    } else {
+      alert("Error: " + response.status);
+    }
+   
+    };
 
   return (
     <div>
@@ -72,7 +94,7 @@ export function Expediente() {
           <div>
             <h3 className="titulo">Expediente</h3>
             <input id="folio-input" type="text" placeholder="Folio Expediente:"/>
-            <button className='Cargar' onClick={CargarExpediente}>Cargar Expediente</button>
+            <button className='Cargar' onClick={CargarExpediente} >Cargar Expediente</button>
             <select value={selectedOption} onChange={e => setSelectedOption(e.target.value)}>
               <option value="" disabled hidden>
                 <h2>Seleccione Documento</h2>
@@ -96,7 +118,12 @@ export function Expediente() {
           </div>
         </div>
 
-        <ENVIAR_NOTI/>
+        <div className='EnviarNoti'>
+        <h3 className="titulo">Enviar notificación</h3>
+        <input id="asunto-input" type="text" placeholder="Asunto" maxLength={50} value={Asunto} onChange={e => SetAsunto(e.target.value)} />
+        <textarea rows="auto" cols="auto" placeholder='Texto..' maxLength={5000} value={Texto} onChange={e => SetTexto(e.target.value)}></textarea>
+        <button onClick={handleEnviarNotificacion}><b>Enviar Notificación</b></button>
+      </div>
     </div>
   )
 }

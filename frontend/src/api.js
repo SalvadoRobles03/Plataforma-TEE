@@ -77,6 +77,12 @@ const GetNOTIF = async (id) => {
     return data;
   };
   
+  const GetUsuario = async (id) => {
+    const response = await axios.get(`http://localhost:2023/api/userFolio/${id}`);
+    const data = response.data;
+    const usuario = parseInt(data.Usuario);
+    return usuario;
+  };
 
 
 const validarUsuario = async (username, password) => {
@@ -142,12 +148,13 @@ const insertarUsuario = async (name, apelliodp,apellidom,rfc,email,password) => 
     return response;
 };
 
-const insertarNotificacion = async (fechae,asunto,contenido) => {
+const insertarNotificacion = async (fechae,asunto,contenido,receptor) => {
     
     const jsonData = JSON.stringify({
         fecha_envio: fechae,
         asunto: asunto,
-        contenido: contenido
+        contenido: contenido,
+        receptor: receptor
     });
     const response = await axios.post('http://localhost:2023/api/InsertNotif/',jsonData , {
         headers: {
@@ -159,4 +166,4 @@ const insertarNotificacion = async (fechae,asunto,contenido) => {
     return response;
 };
 
-export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario};
+export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario};

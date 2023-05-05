@@ -66,7 +66,7 @@ export function Impugnarc() {
         </div>
 
         <div className="OPCIONES">
-            <div className="opciones1">
+            {/* <div className="opciones1">
                 <div className="Titulo">
                     <h3 className="CENTRO">¿Comó desea adjuntar el recurso?</h3>
                 </div>
@@ -85,7 +85,9 @@ export function Impugnarc() {
                         </label>   
                     </li>
                 </ul>
-            </div>
+            </div> */}
+            
+            {/* <!--
             <div className="opciones1">
                 <div className="Titulo">
                     <h3>Calidad de la Persona que Comparezca</h3>
@@ -101,12 +103,12 @@ export function Impugnarc() {
                         <input type="radio" id="terceria" name="calidad" value="TERCERIA"/> ¿Compareces como Tercería?</label>
                     </li>
                 </ul>
-            </div>
+            </div> --> */}
         </div>
         <div className="adjuntar-archivos" id="drop-area">
         <div className="titulo1"><h3>Adjuntar Recurso</h3></div>
             <div >
-                <p>Arrastre aquí sus archivos</p>
+                <p>Subir archivo pdf</p>
                 <input type="file" id="file-input" accept=".pdf,.doc,.docx" multiple/>      
             </div>
         </div>

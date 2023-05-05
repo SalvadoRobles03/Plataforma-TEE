@@ -62,12 +62,10 @@
       text-align: center;
       
       margin-top: calc(75px + 15px + 60px + 20px);
-      left: 650px;
+      align-items: center;
   
       
     }
-  
-  
   
     .adjuntar-archivos div p{
       background-color:#a59e9e;

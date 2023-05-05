@@ -27,19 +27,6 @@ export function Registro() {
       const handleSubmit = async (event) => {
         event.preventDefault();
        
-       //checar si email está escrito correctamente
-       if (!formData.email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) { // Que se cumpla el formato de email.
-        alert("Correo electrónico inválido.");
-        return;
-        }
-
-        // Check if user with this email already exists in the database
-        const emailExists = await checkEmailExists(formData.email);
-            if (emailExists) {
-                alert("Este correo electrónico ya se encuentra registrado.");
-            return;
-        }
-
         //checar si contraseñas coinciden
         if (formData.password != formData.cpassword) //Straightforward, lógica de primer sem.
         {
