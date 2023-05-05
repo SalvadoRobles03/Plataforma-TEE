@@ -65,6 +65,9 @@
       left: 350px;
       width: 60%;
       height: 40%;
+      left: 350px;
+      width: 60%;
+      height: 40%;
       
     }
   
@@ -104,6 +107,7 @@
 
   .MENU2{
     align-items: center;
+    margin-left:300px;
     margin-left:300px;
     margin-top: calc(75px + 15px);
     font-weight: bold;
