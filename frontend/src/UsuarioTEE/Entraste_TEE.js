@@ -47,7 +47,11 @@ export function Entraste() {
                 </ul>
                 </div>
 
-                <h1>BIENVENIDO</h1>
+                <div className="Presentacion">
+                    <h1>BIENVENIDO</h1>
+                    <h2>Bienvenido a la plataforma de del Tribunal Estatal Electoral</h2>
+                    <img src={require("../sections/TEEAdmin.png" )} alt="logo" width="40%"/>
+                </div>
 
                 
         </body>

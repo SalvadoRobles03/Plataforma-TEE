@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import "./sections/css/registro.css"
-import {insertarUsuario} from '/Users/nataliavalles/Downloads/TribunalFinal/frontend/src/api.js'
+import {insertarUsuario} from '../src/api'
 
 export function Registro() {
 
