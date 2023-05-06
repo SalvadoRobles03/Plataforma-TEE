@@ -360,6 +360,32 @@ app.post('/api/InsertDoc', (req, res) => {
         });
   });
 
+  app.get('/api/ObtenerUltimosRegistros', async (req, res) => {
+    try {
+      await sql.connect(config);
+      
+      const expedientesQuery = "SELECT * FROM Expedientes WHERE id_Expediente = (SELECT MAX(id_Expediente) FROM Expedientes);";
+      const documentosQuery = "SELECT * FROM Documentos WHERE Folio_Documento = (SELECT MAX(Folio_Documento) FROM Documentos)";
+  
+      const request = new sql.Request();
+      const expedientesResult = await request.query(expedientesQuery);
+      const documentosResult = await request.query(documentosQuery);
+  
+      const response = {
+        expedientes: expedientesResult.recordset,
+        documentos: documentosResult.recordset
+      };
+      res.status(200).json(response);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error al obtener los últimos registros');
+    } finally {
+      sql.close();
+    }
+  });
+  
+  
+
   app.post('/api/createExpediente', (req, res) => {
     sql.connect(config, (err) => {
       if (err) {
@@ -382,6 +408,29 @@ app.post('/api/InsertDoc', (req, res) => {
             }
           });
     });
+
+    app.post('/api/Expe-Doc', (req, res) => {
+      sql.connect(config, (err) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send('No se puede conectar a la base de datos.');
+        } else {
+          const request = new sql.Request();
+          const { id_Expediente,Folio_Documento } = req.body;
+          
+          const insertQuery = `INSERT INTO Expediente_Documento (id_Expediente,Folio_Documento) VALUES ('${id_Expediente}',${Folio_Documento})`;
+          console.log(insertQuery);
+                request.query(insertQuery, (err, result) => {
+                  if (err) {
+                    console.log(err);
+                    res.status(500).send('No se pudo hacer la relación');
+                  } else {
+                    res.status(201).send('Relacion Exp-Doc Completada');
+                  }
+                });
+              }
+            });
+      });
    
 
     app.post('/api/uploadPrueba', (req, res) => {

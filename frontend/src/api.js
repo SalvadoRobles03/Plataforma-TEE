@@ -90,6 +90,16 @@ const GetNOTIF = async (id) => {
     return data;
   };
 
+  const ObtenerUltimosRegistros = async () => {
+    try {
+      const response = await axios.get('http://localhost:2023/api/ObtenerUltimosRegistros');
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error al obtener los últimos registros');
+    }
+  };
+
 
 const validarUsuario = async (username, password) => {
 
@@ -172,11 +182,25 @@ const createExpediente = async(nombre,usuario,link) => {
 
 }
 
-const InsertDoc = async(link)=> {
+const InsertDoc = async(link,Tipo)=> {
     const jsonData2 = JSON.stringify({
         Document_Link: link,
     });
     const response = await axios.post('http://localhost:2023/api/InsertDoc/',jsonData2 , {
+        headers: {
+        'Content-Type': 'application/json'
+        }}
+    );
+    console.log(response)
+    return response
+}
+
+const Exp_Doc = async(id_Expediente,Folio_Documento)=> {
+    const jsonData2 = JSON.stringify({
+        id_Expediente: id_Expediente,
+        Folio_Documento:Folio_Documento
+    });
+    const response = await axios.post('http://localhost:2023/api/Expe-Doc/',jsonData2 , {
         headers: {
         'Content-Type': 'application/json'
         }}
@@ -216,4 +240,4 @@ const insertarNotificacion = async (fechae,asunto,contenido,receptor) => {
 };
 
 
-export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario, GetUserId,createExpediente,uploadPrueba,InsertDoc};
+export {validarUsuario,ObtenerUltimosRegistros,validarUsuarioTEE,Exp_Doc,getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario, GetUserId,createExpediente,uploadPrueba,InsertDoc};

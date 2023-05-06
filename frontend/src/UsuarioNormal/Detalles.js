@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../sections/css/detalles.css"
 import React, { useState } from 'react';
 import { uploadPrueba } from "../api.js";
+import { GetUserId } from "../api.js";
 
 export  function Detalles() {
     const [link, setLink] = useState("");
@@ -63,28 +64,23 @@ export  function Detalles() {
             <Link to = "/Detalles">
                 <button className="two" style={{backgroundColor:"#743484"}}>2. Adjuntar Pruebas</button>
             </Link>
-            <Link to = "/Cargarrec">
-                <button className="three">3. Comentarios</button>
-            </Link>
-            <Link to = "/Firma">
-                <button className="four">4. Firma</button>
-            </Link>
+            
 
         </div>
         <div className="Footer">
             <Link to = "/Impugnarc">
                 <a><button>Anterior</button></a> 
             </Link>
-            <Link to = "/Cargarrec">
-                <a><button>Siguiente</button></a> 
-            </Link>
+            
+                <a><button onClick={handleSubmit}>Enviar</button></a> 
+            
             
         </div>
 
         <div className="adjuntar-archivos" id="drop-area">
         <div className="titulo1"><h3>Adjuntar Pruebas</h3></div>
             <div className="separar">
-            <input type="text" id="file-link" placeholder="Link a la carpeta de Google Drive" />        
+            <input type="text" id="file-link" placeholder="Ingrese el link de google drive al pdf de su prueba" value={link}  onChange={e => setLink(e.target.value)} />      
             </div>
         </div>
 

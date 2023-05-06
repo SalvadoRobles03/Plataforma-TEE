@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import { GetUserId } from "../api";
 import { createExpediente } from "../api";
 import { InsertDoc } from "../api";
+import { Exp_Doc } from "../api";
+import { ObtenerUltimosRegistros } from "../api";
 
 function Impugnarc() {
     const [link, setLink] = useState("");
@@ -19,7 +21,21 @@ function Impugnarc() {
         const userId=await GetUserId(mail);
         console.log(userId);
         const response=await createExpediente(name,userId)
-        const response2=await InsertDoc(link)
+        const response2=await InsertDoc(link,"demanda")
+        const ultimosRegistros = await ObtenerUltimosRegistros();
+    
+        // Guardar los datos en variables separadas
+        const ultimoExpediente = ultimosRegistros.expedientes[0];
+        const ultimoDocumento = ultimosRegistros.documentos[0];
+        
+        // Acceder a los valores de cada registro
+        const idExpediente = ultimoExpediente.id_Expediente;
+        console.log(idExpediente)
+        const folioDocumento = ultimoDocumento.Folio_Documento;
+        console.log(folioDocumento)
+
+        const response3 = await Exp_Doc(idExpediente,folioDocumento)
+        
         if (response.status == 201 && response2.status == 201) {  
             if (response.data == "" && response2.data == "")
               alert("Error")
@@ -67,18 +83,16 @@ function Impugnarc() {
             <Link to = "/Detalles">
                 <button className="two">2. Adjuntar Pruebas</button>
             </Link>
-            <Link to = "/Cargarrec">
-                <button className="three">3. Comentarios</button>
-            </Link>
-            <Link to = "/Firma">
-                <button className="four">4. Firma</button>
-            </Link>
+            
         </div>
 
         <div className="Footer">
+        <a><button onClick={handleSubmit}>Enviar</button></a> 
             <Link to = "/Detalles">
-                <a><button onClick={handleSubmit}>Siguiente</button></a> 
+                
+                <a><button >Siguiente</button></a> 
             </Link>
+           
             
         </div>
 
