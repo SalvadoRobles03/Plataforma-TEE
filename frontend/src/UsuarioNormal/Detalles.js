@@ -1,8 +1,29 @@
 import toggleSidebar  from "../sections/toggleSidebar.js";
 import { Link } from "react-router-dom";
 import "../sections/css/detalles.css"
+import React, { useState } from 'react';
+import { uploadPrueba } from "../api.js";
 
 export  function Detalles() {
+    const [link, setLink] = useState("");
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const mail=sessionStorage.getItem('correo')
+        console.log(mail)
+        const userId=await GetUserId(mail);
+        console.log(userId);
+        const response=await uploadPrueba(link)
+        if (response.status == 201) {  
+            if (response.data == "")
+              alert("Error")
+            else 
+              alert("Prueba enviada con exito")
+        } else {
+          alert("Error: " + response.status);
+        }
+    }
+       
   return (
     <div>
         
@@ -62,9 +83,8 @@ export  function Detalles() {
 
         <div className="adjuntar-archivos" id="drop-area">
         <div className="titulo1"><h3>Adjuntar Pruebas</h3></div>
-            <div >
-                <p>Arrastre aquí sus archivos</p>
-                <input type="file" id="file-input" accept=".pdf,.doc,.docx" multiple/>      
+            <div className="separar">
+            <input type="text" id="file-link" placeholder="Link a la carpeta de Google Drive" />        
             </div>
         </div>
 

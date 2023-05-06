@@ -1,12 +1,20 @@
 const cors = require('cors');
-
+const {google, admin_reports_v1} = require('googleapis');
+const axios = require('axios');
+const readline = require('readline');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 var express = require('express');
 var app = express();
 app.use(cors());
 app.use(express.json());
-const path = require('path');
+
+const fs = require('fs');
+const { JWT } = require('google-auth-library');
 
 var sql = require("mssql");
+
+
 
 // config for your database
 var config = {
@@ -305,6 +313,100 @@ app.get('/api/userFolio/:Folio', function (req, res) {
 
 });
 
+app.get('/api/UserID/:correo', function (req, res) {
+
+  sql.connect(config, function (err) {
+  
+      if (err) console.log(err);
+
+      // create Request object
+      var request = new sql.Request();
+         
+      // query to the database and get the records 
+      sentencia = "select id_usuario from Usuario where correo = '" + req.params.correo + "'"; 
+      console.log(sentencia);
+      request.query(sentencia, function (err, recordset) {
+          
+          if (err) console.log(err)
+
+          // send records as a response
+          res.send(recordset.recordset[0]);
+          
+      });
+  });
+
+});
+
+app.post('/api/InsertDoc', (req, res) => {
+  sql.connect(config, (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('No se puede conectar a la base de datos.');
+    } else {
+      const request = new sql.Request();
+      const { Document_Link } = req.body;
+
+      const insertQuery = `INSERT INTO Documentos (Document_Link, Tipo) VALUES ('${Document_Link}','demanda')`;
+      console.log(insertQuery);
+            request.query(insertQuery, (err, result) => {
+              if (err) {
+                console.log(err);
+                res.status(500).send('No se pudo cargar el documento');
+              } else {
+                res.status(201).send('Documento enviado');
+              }
+            });
+          }
+        });
+  });
+
+  app.post('/api/createExpediente', (req, res) => {
+    sql.connect(config, (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('No se puede conectar a la base de datos.');
+      } else {
+        const request = new sql.Request();
+        const { Nombre,Usuario } = req.body;
+        console.log(Usuario);
+        const insertQuery = `INSERT INTO Expedientes (Nombre,Usuario) VALUES ('${Nombre}',${Usuario})`;
+        console.log(insertQuery);
+              request.query(insertQuery, (err, result) => {
+                if (err) {
+                  console.log(err);
+                  res.status(500).send('No se pudo cargar el documento');
+                } else {
+                  res.status(201).send('Documento enviado');
+                }
+              });
+            }
+          });
+    });
+   
+
+    app.post('/api/uploadPrueba', (req, res) => {
+      sql.connect(config, (err) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send('No se puede conectar a la base de datos.');
+        } else {
+          const request = new sql.Request();
+          const { Document_Link } = req.body;
+    
+          const insertQuery = `INSERT INTO Documentos (Document_Link, Tipo) VALUES ('${Document_Link}','prueba')`;
+          console.log(insertQuery);
+                request.query(insertQuery, (err, result) => {
+                  if (err) {
+                    console.log(err);
+                    res.status(500).send('No se pudo cargar el documento');
+                  } else {
+                    res.status(201).send('Documento enviado');
+                  }
+                });
+              }
+            });
+      });
+    
 app.get('/api/Expediente/:Folio', function (req, res) {
 
     sql.connect(config, function (err) {
@@ -328,6 +430,5 @@ app.get('/api/Expediente/:Folio', function (req, res) {
     });
 
 });
-
-
+ 
 app.listen(2023, () => console.log("Listening on port "));

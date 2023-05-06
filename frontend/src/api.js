@@ -84,6 +84,12 @@ const GetNOTIF = async (id) => {
     return usuario;
   };
 
+  const GetUserId = async (mail) => {
+    const response = await axios.get(`http://localhost:2023/api/userID/${mail}`);
+    const data = response.data;
+    return data;
+  };
+
 
 const validarUsuario = async (username, password) => {
 
@@ -148,6 +154,49 @@ const insertarUsuario = async (name, apelliodp,apellidom,rfc,email,password) => 
     return response;
 };
 
+const createExpediente = async(nombre,usuario,link) => {
+    const jsonData = JSON.stringify({
+        Nombre: nombre,
+        Usuario: usuario.id_usuario,
+    });
+    const id=23;
+    console.log(id);
+    console.log(usuario);
+    const response = await axios.post('http://localhost:2023/api/createExpediente/',jsonData , {
+        headers: {
+          'Content-Type': 'application/json'
+        }}
+    );
+    console.log(response)
+    return response
+
+}
+
+const InsertDoc = async(link)=> {
+    const jsonData2 = JSON.stringify({
+        Document_Link: link,
+    });
+    const response = await axios.post('http://localhost:2023/api/InsertDoc/',jsonData2 , {
+        headers: {
+        'Content-Type': 'application/json'
+        }}
+    );
+    console.log(response)
+    return response
+}
+
+const uploadPrueba = async(link) => {
+    const jsonData = JSON.stringify({
+        Document_Link: link,
+    });
+    const response = await axios.post('http://localhost:2023/api/uploadPrueba/',jsonData , {
+        headers: {
+          'Content-Type': 'application/json'
+        }}
+    );
+    console.log(response);
+}
+
 const insertarNotificacion = async (fechae,asunto,contenido,receptor) => {
     
     const jsonData = JSON.stringify({
@@ -166,4 +215,5 @@ const insertarNotificacion = async (fechae,asunto,contenido,receptor) => {
     return response;
 };
 
-export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario};
+
+export {validarUsuario,validarUsuarioTEE, getCorreo, usuarioAutenticado, getNombre, getNombreM, getApellido, getApellidoM, GetNOTIF, getDocLink, GetExpediente, insertarNotificacion, insertarUsuario, GetUsuario, GetUserId,createExpediente,uploadPrueba,InsertDoc};

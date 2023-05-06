@@ -35,6 +35,7 @@ export function Login() {
       if ( valido ) {
           
           sessionStorage.setItem('usuario', Nombre);
+          sessionStorage.setItem('correo', username);
           sessionStorage.setItem('usuariovalidado', 'ok');
           setProceder('ok');
       } else {

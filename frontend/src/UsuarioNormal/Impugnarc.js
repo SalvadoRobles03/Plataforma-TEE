@@ -2,8 +2,35 @@ import "../sections/css/Plantilla.css"
 import toggleSidebar  from "../sections/toggleSidebar";
 import "../sections/css/impugnar.css"
 import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { GetUserId } from "../api";
+import { createExpediente } from "../api";
+import { InsertDoc } from "../api";
 
-export function Impugnarc() {
+function Impugnarc() {
+    const [link, setLink] = useState("");
+    const [name, setName] = useState("");
+
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const mail=sessionStorage.getItem('correo')
+        console.log(mail)
+        const userId=await GetUserId(mail);
+        console.log(userId);
+        const response=await createExpediente(name,userId)
+        const response2=await InsertDoc(link)
+        if (response.status == 201 && response2.status == 201) {  
+            if (response.data == "" && response2.data == "")
+              alert("Error")
+            else 
+              alert("Documento enviado con exito")
+        } else {
+          alert("Error: " + response.status);
+        }
+       
+   
+  };
   return (
     <div>
         
@@ -50,7 +77,7 @@ export function Impugnarc() {
 
         <div className="Footer">
             <Link to = "/Detalles">
-                <a><button>Siguiente</button></a> 
+                <a><button onClick={handleSubmit}>Siguiente</button></a> 
             </Link>
             
         </div>
@@ -58,9 +85,9 @@ export function Impugnarc() {
        
         <div className="adjuntar-archivos" id="drop-area">
         <div className="titulo1"><h3>Adjuntar Demanda</h3></div>
-            <div >
-                <p>Arrastre aquí sus archivos</p>
-                <input type="file" id="file-input" accept=".pdf,.doc,.docx" multiple/>      
+            <div className="separar">
+                <input type="text" id="file-link" placeholder="Nombre del caso"  value={name}  onChange={e => setName(e.target.value)}/> 
+                <input type="text" id="file-link" placeholder="Ingrese el link de google drive al pdf de su demanda" value={link}  onChange={e => setLink(e.target.value)} />      
             </div>
         </div>
 
@@ -69,4 +96,5 @@ export function Impugnarc() {
 }
 
 export default Impugnarc
+
 

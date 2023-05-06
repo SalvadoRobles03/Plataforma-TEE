@@ -99,6 +99,8 @@
   
   .adjuntar-archivos input{
     background-color: #a59e9e;
+    width: 109.3%; /*que quede con lo morado*/
+    margin-left: -40.253px; /*mover barrita del link*/
     
   }
 
@@ -140,3 +142,8 @@
             margin-right: 25px;
             display: inline-block;
   }
+
+
+.separar { /* Si, la llame separar para mover los inputs facil j*/
+  margin-top: 40px;
+}
